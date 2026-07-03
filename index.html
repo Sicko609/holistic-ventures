@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tanmoy Roy | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Tanmoy Roy | Interactive Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
             --primary: #0A2540;
-            --secondary: #639FAB;
+            --secondary: #4A90E2;
             --accent: #00D4B2;
-            --bg-light: #F8FAFC;
-            --text-dark: #1E293B;
-            --text-light: #64748B;
-            --white: #FFFFFF;
+            --dark-bg: #07192C;
+            --card-bg: #FFFFFF;
+            --text-main: #1E293B;
+            --text-muted: #64748B;
+            --sidebar-width: 280px;
         }
 
         * {
@@ -25,149 +26,458 @@
             font-family: 'Inter', sans-serif;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-            line-height: 1.6;
+            background-color: #F8FAFC;
+            color: var(--text-main);
+            display: flex;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        /* Navigation */
-        nav {
+        /* --- INTERACTIVE MULTI-PAGE SIDEBAR --- */
+        .sidebar {
+            width: var(--sidebar-width);
+            background-color: var(--primary);
+            color: white;
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 10%;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover, .nav-links a.active {
-            color: var(--secondary);
-        }
-
-        /* Sections General */
-        section {
-            padding: 100px 10% 80px 10%;
-            min-height: 100vh;
+            height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            padding: 2.5rem 1.5rem;
+            z-index: 100;
+            box-shadow: 4px 0 20px rgba(0,0,0,0.1);
         }
 
-        .section-title {
-            font-size: 2.5rem;
-            color: var(--primary);
+        .profile-zone {
+            text-align: center;
             margin-bottom: 3rem;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--secondary);
+            margin-bottom: 1rem;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+
+        .profile-zone h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .profile-zone p {
+            font-size: 0.8rem;
+            color: var(--secondary);
+            margin-top: 0.3rem;
+            font-weight: 500;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.2rem;
+            color: #BACAD6;
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background-color: rgba(74, 144, 226, 0.15);
+            color: white;
+            font-weight: 600;
+        }
+
+        .nav-item.active {
+            border-left: 4px solid var(--secondary);
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-item i {
+            width: 20px;
+            font-size: 1.1rem;
+        }
+
+        /* --- MAIN CONTENT DISPLAY HOUSING --- */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            flex-index: 1;
+            width: calc(100% - var(--sidebar-width));
+            padding: 4rem;
             position: relative;
         }
 
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 60px;
-            height: 4px;
-            background: var(--secondary);
-            border-radius: 2px;
+        /* Multi-page Page Controller toggles visibility */
+        .page-section {
+            display: none;
+            animation: fadeIn 0.5s ease forwards;
         }
 
-        /* Intro / Home Section */
-        #home {
-            background: linear-gradient(135deg, #0A2540 0%, #1A365D 100%);
-            color: var(--white);
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 4rem;
+        .page-section.active {
+            display: block;
         }
 
-        .hero-text {
-            flex: 1;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .hero-text h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
+        /* --- PAGE TYPOGRAPHY & ELEMENTS --- */
+        .page-header {
+            margin-bottom: 3rem;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary);
             font-weight: 700;
         }
 
-        .hero-text h2 {
-            font-size: 1.5rem;
-            color: var(--secondary);
-            margin-bottom: 1.5rem;
-            font-weight: 400;
-            letter-spacing: 1px;
+        .page-header p {
+            color: var(--text-muted);
+            margin-top: 0.5rem;
         }
 
-        .hero-text p {
-            font-size: 1.1rem;
-            color: #E2E8F0;
-            margin-bottom: 2rem;
-            max-width: 600px;
+        /* Grid Layouts */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
         }
 
-        .hero-img {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-        }
-
-        .profile-container {
-            width: 350px;
-            height: 350px;
-            border-radius: 50%;
+        /* Beautiful Cards */
+        .interactive-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04);
+            border: 1px solid #E2E8F0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
             overflow: hidden;
-            border: 8px solid rgba(255,255,255,0.1);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
 
-        .profile-container img {
-            width: 100%;
+        .interactive-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+            border-color: #CBD5E1;
+        }
+
+        .interactive-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
             height: 100%;
-            object-fit: cover;
-        }
-
-        .btn {
-            display: inline-block;
             background: var(--secondary);
-            color: var(--white);
-            padding: 0.8rem 2rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: transform 0.3s, background 0.3s;
-            box-shadow: 0 4px 15px rgba(99, 159, 171, 0.4);
         }
 
-        .btn:hover {
-            transform: translateY(-
+        .card-tag {
+            display: inline-block;
+            background: #E0F2FE;
+            color: #0369A1;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .interactive-card h3 {
+            font-size: 1.25rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .sub-timeline {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .interactive-card ul {
+            padding-left: 1.2rem;
+            color: #334155;
+        }
+
+        .interactive-card li {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        /* Interactive Skills Page Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1rem;
+        }
+
+        .skill-node {
+            background: white;
+            padding: 1.2rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #E2E8F0;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+
+        .skill-node:hover {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .skill-node i {
+            display: block;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+
+        .skill-node:hover i {
+            color: var(--accent);
+        }
+
+        /* Info Badge Lists */
+        .info-panel {
+            background: var(--primary);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item .icon-box {
+            width: 45px;
+            height: 45px;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            color: var(--accent);
+        }
+
+        /* --- RESPONSIVE MOBILE HANDLERS --- */
+        @media (max-width: 900px) {
+            body { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; position: relative; padding: 1.5rem; }
+            .profile-zone { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; text-align: left; }
+            .profile-img { width: 60px; height: 60px; margin-bottom: 0; }
+            .nav-menu { flex-direction: row; overflow-x: auto; padding-bottom: 0.5rem; }
+            .nav-item { padding: 0.6rem 1rem; white-space: nowrap; }
+            .main-content { width: 100%; margin-left: 0; padding: 2rem; }
+            .info-panel { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="profile-zone">
+            <img src="profile.jpg" class="profile-img" alt="Tanmoy Roy">
+            <div>
+                <h2>Tanmoy Roy</h2>
+                <p>Biotech Undergraduate</p>
+            </div>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item active" onclick="switchPage('home')"><i class="fa-solid fa-house"></i> Home</li>
+            <li class="nav-item" onclick="switchPage('education')"><i class="fa-solid fa-graduation-cap"></i> Education</li>
+            <li class="nav-item" onclick="switchPage('research')"><i class="fa-solid fa-flask"></i> Research</li>
+            <li class="nav-item" onclick="switchPage('skills')"><i class="fa-solid fa-code"></i> Skills</li>
+            <li class="nav-item" onclick="switchPage('contact')"><i class="fa-solid fa-envelope"></i> Contact</li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+
+        <div id="home" class="page-section active">
+            <div class="page-header">
+                <h1>Welcome to my Portfolio</h1>
+                <p>Biotechnology Undergraduate | Research Enthusiast</p>
+            </div>
+            <div class="interactive-card" style="max-width: 800px; padding: 3rem;">
+                <span class="card-tag">Career Objective</span>
+                <p style="font-size: 1.2rem; line-height: 1.8; color: #334155; margin-bottom: 1.5rem;">
+                    Detail-oriented and motivated Biotechnology undergraduate with a strong foundation in research, documentation, and data management. 
+                </p>
+                <p style="color: var(--text-muted); font-size: 1.05rem;">
+                    Seeking to contribute systematically to data pipelines, healthcare technology frameworks, and clinical research analytics environments where high technical accuracy is vital.
+                </p>
+            </div>
+        </div>
+
+        <div id="education" class="page-section">
+            <div class="page-header">
+                <h1>Educational Timeline</h1>
+                <p>Academic profile and credentials</p>
+            </div>
+            <div class="grid-cards">
+                <div class="interactive-card">
+                    <span class="card-tag">Undergraduate</span>
+                    <h3>BSc in Biotechnology</h3>
+                    <div class="sub-timeline"><i class="fa-solid fa-building-columns"></i> BRAC University, Dhaka</div>
+                    <p style="color: var(--text-muted)">Timeline: 2022 – 2026</p>
+                </div>
+                <div class="interactive-card">
+                    <span class="card-tag">College</span>
+                    <h3>Higher Secondary Certificate (HSC)</h3>
+                    <div class="sub-timeline"><i class="fa-solid fa-school"></i> Govt. Sayed Hatem Ali College</div>
+                    <p style="color: var(--text-muted)">Science Stream | 2018 – 2020</p>
+                </div>
+                <div class="interactive-card">
+                    <span class="card-tag">School</span>
+                    <h3>Secondary School Certificate (SSC)</h3>
+                    <div class="sub-timeline"><i class="fa-solid fa-school"></i> Patuakhali Govt. Jubilee High School</div>
+                    <p style="color: var(--text-muted)">Science Stream | 2016 – 2018</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="research" class="page-section">
+            <div class="page-header">
+                <h1>Research & Practical Experience</h1>
+                <p>Published methodology tracking, lab projects, and internships</p>
+            </div>
+            <div class="grid-cards">
+                <div class="interactive-card" style="grid-column: span 1;">
+                    <span class="card-tag">Thesis Project</span>
+                    <h3>Micro/Nanoplastics Impact Study</h3>
+                    <p class="sub-timeline">Supervisor: Fahmina Akhtar</p>
+                    <ul>
+                        <li>Conducted systematic reviews following PRISMA validation tracking frameworks.</li>
+                        <li>Screened and filtered clean clinical endpoints using Rayyan software tools.</li>
+                        <li>Executed advanced meta-analysis models using R programming to determine parameter profiles.</li>
+                    </ul>
+                </div>
+                <div class="interactive-card">
+                    <span class="card-tag">Ongoing Framework</span>
+                    <h3>Maternal Mortality Analysis</h3>
+                    <p class="sub-timeline">Literature Review & Evidence Synthesis</p>
+                    <ul>
+                        <li>Extracting data arrays regarding high-risk maternal near-miss factors.</li>
+                        <li>Structuring metadata categories for clinical identification reports.</li>
+                    </ul>
+                </div>
+                <div class="interactive-card">
+                    <span class="card-tag">Lab Work</span>
+                    <h3>Molecular Biology Intern</h3>
+                    <p class="sub-timeline">Bangladesh Medical University | 2025</p>
+                    <ul>
+                        <li>Assisted processing molecular biology test matrices and complex extraction labs.</li>
+                        <li>Managed and audited core laboratory documentation logs.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="skills" class="page-section">
+            <div class="page-header">
+                <h1>Technical Proficiencies & Toolkit</h1>
+                <p>Hover over items to explore competencies</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-node"><i class="fa-solid fa-code"></i>R Programming</div>
+                <div class="skill-node"><i class="fa-solid fa-chart-bar"></i>SPSS Analytics</div>
+                <div class="skill-node"><i class="fa-solid fa-filter"></i>Rayyan Filtering</div>
+                <div class="skill-node"><i class="fa-solid fa-book-bookmark"></i>Zotero / EndNote</div>
+                <div class="skill-node"><i class="fa-solid fa-magnifying-glass-chart"></i>Meta-Analysis</div>
+                <div class="skill-node"><i class="fa-solid fa-file-waveform"></i>Scientific Text</div>
+                <div class="skill-node"><i class="fa-solid fa-file-excel"></i>MS Excel / Word</div>
+                <div class="skill-node"><i class="fa-solid fa-keyboard"></i>70+ WPM Speed</div>
+            </div>
+        </div>
+
+        <div id="contact" class="page-section">
+            <div class="page-header">
+                <h1>Get In Touch</h1>
+                <p>Connect with Tanmoy Roy for inquiries</p>
+            </div>
+            <div class="info-panel">
+                <div>
+                    <div class="contact-item">
+                        <div class="icon-box"><i class="fa-solid fa-envelope"></i></div>
+                        <div>
+                            <p style="font-size: 0.85rem; color: var(--secondary)">Email Address</p>
+                            <a href="mailto:tanmoy.roy1@g.bracu.ac.bd" style="color: white; text-decoration: none;">tanmoy.roy1@g.bracu.ac.bd</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="icon-box"><i class="fa-solid fa-phone"></i></div>
+                        <div>
+                            <p style="font-size: 0.85rem; color: var(--secondary)">Phone Contact</p>
+                            <p>01709062445</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="icon-box"><i class="fa-brands fa-linkedin"></i></div>
+                        <div>
+                            <p style="font-size: 0.85rem; color: var(--secondary)">LinkedIn Portfolio</p>
+                            <a href="https://linkedin.com/in/tanmoy-roy-596b8741a" target="_blank" style="color: white; text-decoration: none;">Connect on LinkedIn</a>
+                        </div>
+                    </div>
+                </div>
+                <div style="border-left: 1px solid rgba(255,255,255,0.1); padding-left: 2rem;">
+                    <h3 style="color: var(--accent); margin-bottom: 1rem;">Extra Details</h3>
+                    <p style="margin-bottom: 1rem;"><strong>Languages:</strong> Bengali (Native), English (Professional)</p>
+                    <p><strong>Activities:</strong> Leader of Debate Team, Member of BRAC University Cultural Club</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function switchPage(pageId) {
+            // Hide all sub-pages
+            const pages = document.querySelectorAll('.page-section');
+            pages.forEach(page => page.classList.remove('active'));
+
+            // Remove active classes from navigation markers
+            const menuItems = document.querySelectorAll('.nav-item');
+            menuItems.forEach(item => item.classList.remove('active'));
+
+            // Turn on active page
+            document.getElementById(pageId).classList.add('active');
+
+            // Find clicked item and set highlights
+            event.currentTarget.classList.add('active');
+            
+            // Scroll safely to top container window smoothly on execution
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
