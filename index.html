@@ -1,483 +1,237 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tanmoy Roy | Interactive Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        :root {
-            --primary: #0A2540;
-            --secondary: #4A90E2;
-            --accent: #00D4B2;
-            --dark-bg: #07192C;
-            --card-bg: #FFFFFF;
-            --text-main: #1E293B;
-            --text-muted: #64748B;
-            --sidebar-width: 280px;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
-
-        body {
-            background-color: #F8FAFC;
-            color: var(--text-main);
-            display: flex;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* --- INTERACTIVE MULTI-PAGE SIDEBAR --- */
-        .sidebar {
-            width: var(--sidebar-width);
-            background-color: var(--primary);
-            color: white;
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            padding: 2.5rem 1.5rem;
-            z-index: 100;
-            box-shadow: 4px 0 20px rgba(0,0,0,0.1);
-        }
-
-        .profile-zone {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .profile-img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--secondary);
-            margin-bottom: 1rem;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-        }
-
-        .profile-zone h2 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-
-        .profile-zone p {
-            font-size: 0.8rem;
-            color: var(--secondary);
-            margin-top: 0.3rem;
-            font-weight: 500;
-        }
-
-        .nav-menu {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .nav-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1rem 1.2rem;
-            color: #BACAD6;
-            text-decoration: none;
-            font-weight: 500;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .nav-item:hover, .nav-item.active {
-            background-color: rgba(74, 144, 226, 0.15);
-            color: white;
-            font-weight: 600;
-        }
-
-        .nav-item.active {
-            border-left: 4px solid var(--secondary);
-            background-color: rgba(255, 255, 255, 0.05);
-        }
-
-        .nav-item i {
-            width: 20px;
-            font-size: 1.1rem;
-        }
-
-        /* --- MAIN CONTENT DISPLAY HOUSING --- */
-        .main-content {
-            margin-left: var(--sidebar-width);
-            flex-index: 1;
-            width: calc(100% - var(--sidebar-width));
-            padding: 4rem;
-            position: relative;
-        }
-
-        /* Multi-page Page Controller toggles visibility */
-        .page-section {
-            display: none;
-            animation: fadeIn 0.5s ease forwards;
-        }
-
-        .page-section.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* --- PAGE TYPOGRAPHY & ELEMENTS --- */
-        .page-header {
-            margin-bottom: 3rem;
-        }
-
-        .page-header h1 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            font-weight: 700;
-        }
-
-        .page-header p {
-            color: var(--text-muted);
-            margin-top: 0.5rem;
-        }
-
-        /* Grid Layouts */
-        .grid-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.5rem;
-        }
-
-        /* Beautiful Cards */
-        .interactive-card {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 16px;
-            box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04);
-            border: 1px solid #E2E8F0;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .interactive-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
-            border-color: #CBD5E1;
-        }
-
-        .interactive-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: var(--secondary);
-        }
-
-        .card-tag {
-            display: inline-block;
-            background: #E0F2FE;
-            color: #0369A1;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .interactive-card h3 {
-            font-size: 1.25rem;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .sub-timeline {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .interactive-card ul {
-            padding-left: 1.2rem;
-            color: #334155;
-        }
-
-        .interactive-card li {
-            margin-bottom: 0.5rem;
-            font-size: 0.95rem;
-        }
-
-        /* Interactive Skills Page Grid */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 1rem;
-        }
-
-        .skill-node {
-            background: white;
-            padding: 1.2rem;
-            border-radius: 12px;
-            text-align: center;
-            border: 1px solid #E2E8F0;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
-        }
-
-        .skill-node:hover {
-            background: var(--primary);
-            color: white;
-            transform: scale(1.05);
-        }
-
-        .skill-node i {
-            display: block;
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: var(--secondary);
-        }
-
-        .skill-node:hover i {
-            color: var(--accent);
-        }
-
-        /* Info Badge Lists */
-        .info-panel {
-            background: var(--primary);
-            color: white;
-            padding: 3rem;
-            border-radius: 20px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-item .icon-box {
-            width: 45px;
-            height: 45px;
-            background: rgba(255,255,255,0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 10px;
-            color: var(--accent);
-        }
-
-        /* --- RESPONSIVE MOBILE HANDLERS --- */
-        @media (max-width: 900px) {
-            body { flex-direction: column; }
-            .sidebar { width: 100%; height: auto; position: relative; padding: 1.5rem; }
-            .profile-zone { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; text-align: left; }
-            .profile-img { width: 60px; height: 60px; margin-bottom: 0; }
-            .nav-menu { flex-direction: row; overflow-x: auto; padding-bottom: 0.5rem; }
-            .nav-item { padding: 0.6rem 1rem; white-space: nowrap; }
-            .main-content { width: 100%; margin-left: 0; padding: 2rem; }
-            .info-panel { grid-template-columns: 1fr; }
-        }
-    </style>
-</head>
-<body>
-
-    <div class="sidebar">
-        <div class="profile-zone">
-            <img src="profile.jpg" class="profile-img" alt="Tanmoy Roy">
-            <div>
-                <h2>Tanmoy Roy</h2>
-                <p>Biotech Undergraduate</p>
-            </div>
-        </div>
-        <ul class="nav-menu">
-            <li class="nav-item active" onclick="switchPage('home')"><i class="fa-solid fa-house"></i> Home</li>
-            <li class="nav-item" onclick="switchPage('education')"><i class="fa-solid fa-graduation-cap"></i> Education</li>
-            <li class="nav-item" onclick="switchPage('research')"><i class="fa-solid fa-flask"></i> Research</li>
-            <li class="nav-item" onclick="switchPage('skills')"><i class="fa-solid fa-code"></i> Skills</li>
-            <li class="nav-item" onclick="switchPage('contact')"><i class="fa-solid fa-envelope"></i> Contact</li>
-        </ul>
-    </div>
-
-    <div class="main-content">
-
-        <div id="home" class="page-section active">
-            <div class="page-header">
-                <h1>Welcome to my Portfolio</h1>
-                <p>Biotechnology Undergraduate | Research Enthusiast</p>
-            </div>
-            <div class="interactive-card" style="max-width: 800px; padding: 3rem;">
-                <span class="card-tag">Career Objective</span>
-                <p style="font-size: 1.2rem; line-height: 1.8; color: #334155; margin-bottom: 1.5rem;">
-                    Detail-oriented and motivated Biotechnology undergraduate with a strong foundation in research, documentation, and data management. 
-                </p>
-                <p style="color: var(--text-muted); font-size: 1.05rem;">
-                    Seeking to contribute systematically to data pipelines, healthcare technology frameworks, and clinical research analytics environments where high technical accuracy is vital.
-                </p>
-            </div>
-        </div>
-
-        <div id="education" class="page-section">
-            <div class="page-header">
-                <h1>Educational Timeline</h1>
-                <p>Academic profile and credentials</p>
-            </div>
-            <div class="grid-cards">
-                <div class="interactive-card">
-                    <span class="card-tag">Undergraduate</span>
-                    <h3>BSc in Biotechnology</h3>
-                    <div class="sub-timeline"><i class="fa-solid fa-building-columns"></i> BRAC University, Dhaka</div>
-                    <p style="color: var(--text-muted)">Timeline: 2022 – 2026</p>
-                </div>
-                <div class="interactive-card">
-                    <span class="card-tag">College</span>
-                    <h3>Higher Secondary Certificate (HSC)</h3>
-                    <div class="sub-timeline"><i class="fa-solid fa-school"></i> Govt. Sayed Hatem Ali College</div>
-                    <p style="color: var(--text-muted)">Science Stream | 2018 – 2020</p>
-                </div>
-                <div class="interactive-card">
-                    <span class="card-tag">School</span>
-                    <h3>Secondary School Certificate (SSC)</h3>
-                    <div class="sub-timeline"><i class="fa-solid fa-school"></i> Patuakhali Govt. Jubilee High School</div>
-                    <p style="color: var(--text-muted)">Science Stream | 2016 – 2018</p>
-                </div>
-            </div>
-        </div>
-
-        <div id="research" class="page-section">
-            <div class="page-header">
-                <h1>Research & Practical Experience</h1>
-                <p>Published methodology tracking, lab projects, and internships</p>
-            </div>
-            <div class="grid-cards">
-                <div class="interactive-card" style="grid-column: span 1;">
-                    <span class="card-tag">Thesis Project</span>
-                    <h3>Micro/Nanoplastics Impact Study</h3>
-                    <p class="sub-timeline">Supervisor: Fahmina Akhtar</p>
-                    <ul>
-                        <li>Conducted systematic reviews following PRISMA validation tracking frameworks.</li>
-                        <li>Screened and filtered clean clinical endpoints using Rayyan software tools.</li>
-                        <li>Executed advanced meta-analysis models using R programming to determine parameter profiles.</li>
-                    </ul>
-                </div>
-                <div class="interactive-card">
-                    <span class="card-tag">Ongoing Framework</span>
-                    <h3>Maternal Mortality Analysis</h3>
-                    <p class="sub-timeline">Literature Review & Evidence Synthesis</p>
-                    <ul>
-                        <li>Extracting data arrays regarding high-risk maternal near-miss factors.</li>
-                        <li>Structuring metadata categories for clinical identification reports.</li>
-                    </ul>
-                </div>
-                <div class="interactive-card">
-                    <span class="card-tag">Lab Work</span>
-                    <h3>Molecular Biology Intern</h3>
-                    <p class="sub-timeline">Bangladesh Medical University | 2025</p>
-                    <ul>
-                        <li>Assisted processing molecular biology test matrices and complex extraction labs.</li>
-                        <li>Managed and audited core laboratory documentation logs.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div id="skills" class="page-section">
-            <div class="page-header">
-                <h1>Technical Proficiencies & Toolkit</h1>
-                <p>Hover over items to explore competencies</p>
-            </div>
-            <div class="skills-grid">
-                <div class="skill-node"><i class="fa-solid fa-code"></i>R Programming</div>
-                <div class="skill-node"><i class="fa-solid fa-chart-bar"></i>SPSS Analytics</div>
-                <div class="skill-node"><i class="fa-solid fa-filter"></i>Rayyan Filtering</div>
-                <div class="skill-node"><i class="fa-solid fa-book-bookmark"></i>Zotero / EndNote</div>
-                <div class="skill-node"><i class="fa-solid fa-magnifying-glass-chart"></i>Meta-Analysis</div>
-                <div class="skill-node"><i class="fa-solid fa-file-waveform"></i>Scientific Text</div>
-                <div class="skill-node"><i class="fa-solid fa-file-excel"></i>MS Excel / Word</div>
-                <div class="skill-node"><i class="fa-solid fa-keyboard"></i>70+ WPM Speed</div>
-            </div>
-        </div>
-
-        <div id="contact" class="page-section">
-            <div class="page-header">
-                <h1>Get In Touch</h1>
-                <p>Connect with Tanmoy Roy for inquiries</p>
-            </div>
-            <div class="info-panel">
-                <div>
-                    <div class="contact-item">
-                        <div class="icon-box"><i class="fa-solid fa-envelope"></i></div>
-                        <div>
-                            <p style="font-size: 0.85rem; color: var(--secondary)">Email Address</p>
-                            <a href="mailto:tanmoy.roy1@g.bracu.ac.bd" style="color: white; text-decoration: none;">tanmoy.roy1@g.bracu.ac.bd</a>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="icon-box"><i class="fa-solid fa-phone"></i></div>
-                        <div>
-                            <p style="font-size: 0.85rem; color: var(--secondary)">Phone Contact</p>
-                            <p>01709062445</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="icon-box"><i class="fa-brands fa-linkedin"></i></div>
-                        <div>
-                            <p style="font-size: 0.85rem; color: var(--secondary)">LinkedIn Portfolio</p>
-                            <a href="https://linkedin.com/in/tanmoy-roy-596b8741a" target="_blank" style="color: white; text-decoration: none;">Connect on LinkedIn</a>
-                        </div>
-                    </div>
-                </div>
-                <div style="border-left: 1px solid rgba(255,255,255,0.1); padding-left: 2rem;">
-                    <h3 style="color: var(--accent); margin-bottom: 1rem;">Extra Details</h3>
-                    <p style="margin-bottom: 1rem;"><strong>Languages:</strong> Bengali (Native), English (Professional)</p>
-                    <p><strong>Activities:</strong> Leader of Debate Team, Member of BRAC University Cultural Club</p>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
+    <title>Holistic Ventures | Global Procurement</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        function switchPage(pageId) {
-            // Hide all sub-pages
-            const pages = document.querySelectorAll('.page-section');
-            pages.forEach(page => page.classList.remove('active'));
-
-            // Remove active classes from navigation markers
-            const menuItems = document.querySelectorAll('.nav-item');
-            menuItems.forEach(item => item.classList.remove('active'));
-
-            // Turn on active page
-            document.getElementById(pageId).classList.add('active');
-
-            // Find clicked item and set highlights
-            event.currentTarget.classList.add('active');
-            
-            // Scroll safely to top container window smoothly on execution
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'Helvetica', 'Arial', 'sans-serif'],
+                        mono: ['Courier New', 'Courier', 'monospace'],
+                    },
+                    colors: {
+                        black: '#0a0a0a',
+                        white: '#fcfcfc',
+                    }
+                }
+            }
         }
     </script>
+    <style>
+        /* Custom scrollbar for a brutalist feel */
+        ::-webkit-scrollbar { width: 12px; }
+        ::-webkit-scrollbar-track { background: #fcfcfc; border-left: 2px solid #0a0a0a; }
+        ::-webkit-scrollbar-thumb { background: #0a0a0a; }
+        
+        /* Brutalist selection color */
+        ::selection { background: #0a0a0a; color: #fcfcfc; }
+    </style>
+</head>
+<body class="bg-white text-black font-sans antialiased flex flex-col min-h-screen">
+
+    <header class="border-b-[4px] border-black bg-white sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-24 flex items-center justify-between">
+            
+            <!-- Custom Logo Implementation based on your design -->
+            <div class="flex items-center space-x-4 cursor-pointer hover:opacity-80 transition-none">
+                <!-- Geometric Square Icon -->
+                <div class="w-14 h-14 bg-black relative flex-shrink-0">
+                    <!-- White diagonal cut -->
+                    <div class="absolute bottom-0 right-0 w-full h-full bg-white" style="clip-path: polygon(100% 0, 100% 100%, 0 100%);"></div>
+                    <!-- Small center notch -->
+                    <div class="absolute top-1/2 left-1/2 w-2.5 h-2.5 bg-black -translate-x-1/2 -translate-y-1/2"></div>
+                </div>
+                <!-- Typography -->
+                <div class="flex flex-col">
+                    <span class="font-black text-2xl leading-none tracking-tighter">HOLISTIC</span>
+                    <span class="font-black text-2xl leading-none tracking-tighter">VENTURES</span>
+                    <div class="h-1 bg-black mt-1 w-full"></div>
+                </div>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex space-x-8">
+                <a href="#about" class="text-sm font-bold uppercase tracking-widest hover:bg-black hover:text-white px-2 py-1 transition-none border-2 border-transparent hover:border-black">Operations</a>
+                <a href="#divisions" class="text-sm font-bold uppercase tracking-widest hover:bg-black hover:text-white px-2 py-1 transition-none border-2 border-transparent hover:border-black">Divisions</a>
+                <a href="#contact" class="text-sm font-bold uppercase tracking-widest hover:bg-black hover:text-white px-2 py-1 transition-none border-2 border-transparent hover:border-black">Contact</a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden border-2 border-black p-2 hover:bg-black hover:text-white transition-none focus:outline-none focus:bg-black focus:text-white">
+                <div class="w-6 h-0.5 bg-current mb-1.5"></div>
+                <div class="w-6 h-0.5 bg-current mb-1.5"></div>
+                <div class="w-6 h-0.5 bg-current"></div>
+            </button>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <section class="bg-black text-white pt-20 pb-16 md:pt-32 md:pb-28 px-4 sm:px-6 lg:px-8 border-b-[4px] border-black">
+            <div class="max-w-7xl mx-auto">
+                <div class="max-w-4xl">
+                    <div class="inline-block border-2 border-white px-3 py-1 mb-6">
+                        <span class="font-mono text-xs font-bold tracking-widest uppercase">Global Routing Code: HV-DHK-01</span>
+                    </div>
+                    <h1 class="text-5xl sm:text-7xl md:text-8xl font-black uppercase tracking-tighter leading-[0.9] mb-8">
+                        Precision.<br />
+                        <span class="text-gray-400">Scale.</span><br />
+                        Logistics.
+                    </h1>
+                    <p class="font-mono text-lg md:text-xl text-gray-300 max-w-2xl mb-12 border-l-4 border-white pl-6 py-2 leading-relaxed">
+                        A multinational sourcing syndicate. We move heavy electrical infrastructure and mass-market consumer textiles through highly regulated global corridors with absolute efficiency.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#divisions" class="border-2 border-white bg-white text-black px-8 py-4 font-bold uppercase tracking-widest text-sm hover:bg-black hover:text-white hover:border-white transition-none flex items-center justify-between group">
+                            View Operations
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 ml-6 group-hover:translate-x-2 transition-transform duration-200"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="border-b-[4px] border-black bg-white">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3">
+                <div class="p-8 md:p-12 border-b-4 md:border-b-0 md:border-r-4 border-black hover:bg-black hover:text-white transition-none group cursor-crosshair">
+                    <span class="block text-5xl md:text-7xl font-black tracking-tighter mb-2">40+</span>
+                    <span class="font-mono text-sm font-bold uppercase tracking-widest text-gray-500 group-hover:text-gray-300">Ports Serviced</span>
+                </div>
+                <div class="p-8 md:p-12 border-b-4 md:border-b-0 md:border-r-4 border-black hover:bg-black hover:text-white transition-none group cursor-crosshair">
+                    <span class="block text-5xl md:text-7xl font-black tracking-tighter mb-2">Tier 1</span>
+                    <span class="font-mono text-sm font-bold uppercase tracking-widest text-gray-500 group-hover:text-gray-300">Electrical Compliance</span>
+                </div>
+                <div class="p-8 md:p-12 hover:bg-black hover:text-white transition-none group cursor-crosshair">
+                    <span class="block text-5xl md:text-7xl font-black tracking-tighter mb-2">99%</span>
+                    <span class="font-mono text-sm font-bold uppercase tracking-widest text-gray-500 group-hover:text-gray-300">Clearance Rate</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="divisions" class="bg-gray-100 py-24 px-4 sm:px-6 lg:px-8 border-b-[4px] border-black">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-16">
+                    <div>
+                        <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tighter text-black">Active Divisions</h2>
+                        <div class="w-48 h-2 bg-black mt-6"></div>
+                    </div>
+                    <p class="font-mono text-gray-600 max-w-sm mt-8 md:mt-0 md:text-right text-sm font-bold uppercase">
+                        Structural departments engineered for maximum yield across disparate international markets.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-0 border-[4px] border-black bg-white">
+                    
+                    <!-- Electrical -->
+                    <div class="group p-10 md:p-14 border-b-4 md:border-r-4 border-black hover:bg-black hover:text-white transition-none flex flex-col justify-between min-h-[350px]">
+                        <div>
+                            <div class="mb-8 inline-block border-[3px] border-black p-4 group-hover:border-white group-hover:bg-white group-hover:text-black transition-none">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-10 h-10"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                            </div>
+                            <h3 class="text-3xl md:text-4xl font-black uppercase mb-4 leading-none tracking-tight">Electrical Procurement</h3>
+                        </div>
+                        <p class="font-mono text-sm leading-relaxed text-gray-600 group-hover:text-gray-400 font-bold">
+                            Strategic sourcing of industrial components, heavy circuitry, and consumer electronics. Guaranteed supply chain integrity from factory floor to final warehouse.
+                        </p>
+                    </div>
+
+                    <!-- Textiles / Silly Socks -->
+                    <div class="group p-10 md:p-14 border-b-4 border-black hover:bg-black hover:text-white transition-none flex flex-col justify-between min-h-[350px]">
+                        <div>
+                            <div class="mb-8 inline-block border-[3px] border-black p-4 group-hover:border-white group-hover:bg-white group-hover:text-black transition-none">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-10 h-10"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg>
+                            </div>
+                            <h3 class="text-3xl md:text-4xl font-black uppercase mb-2 leading-none tracking-tight">Apparel & Textiles</h3>
+                            <span class="inline-block bg-black text-white group-hover:bg-white group-hover:text-black font-mono text-xs font-bold px-2 py-1 mb-6 uppercase">Operating: Silly Socks</span>
+                        </div>
+                        <p class="font-mono text-sm leading-relaxed text-gray-600 group-hover:text-gray-400 font-bold">
+                            Bulk transit of premium knitwear and novelty consumer fashion. Managing massive volumetric shipments with zero inventory loss.
+                        </p>
+                    </div>
+
+                    <!-- Customs -->
+                    <div class="group p-10 md:p-14 border-b-4 md:border-b-0 md:border-r-4 border-black hover:bg-black hover:text-white transition-none flex flex-col justify-between min-h-[350px]">
+                        <div>
+                            <div class="mb-8 inline-block border-[3px] border-black p-4 group-hover:border-white group-hover:bg-white group-hover:text-black transition-none">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-10 h-10"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="m9 15 2 2 4-4"/></svg>
+                            </div>
+                            <h3 class="text-3xl md:text-4xl font-black uppercase mb-4 leading-none tracking-tight">Customs Clearance</h3>
+                        </div>
+                        <p class="font-mono text-sm leading-relaxed text-gray-600 group-hover:text-gray-400 font-bold">
+                            Navigating bureaucratic bottlenecks seamlessly. We ensure absolute compliance, rapidly expediting international port-to-warehouse transitions.
+                        </p>
+                    </div>
+
+                    <!-- Logistics -->
+                    <div class="group p-10 md:p-14 hover:bg-black hover:text-white transition-none flex flex-col justify-between min-h-[350px]">
+                        <div>
+                            <div class="mb-8 inline-block border-[3px] border-black p-4 group-hover:border-white group-hover:bg-white group-hover:text-black transition-none">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-10 h-10"><circle cx="12" cy="5" r="3"/><line x1="12" y1="22" x2="12" y2="8"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/></svg>
+                            </div>
+                            <h3 class="text-3xl md:text-4xl font-black uppercase mb-4 leading-none tracking-tight">Global Freight</h3>
+                        </div>
+                        <p class="font-mono text-sm leading-relaxed text-gray-600 group-hover:text-gray-400 font-bold">
+                            Air, sea, and land transport synchronized perfectly. Total oversight over shipping routes, ensuring cargo remains untampered and on schedule.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="contact" class="bg-white pt-20 pb-8 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+            <div class="col-span-1 md:col-span-2">
+                <!-- Repeated Logo for Footer -->
+                <div class="flex items-center space-x-4 mb-6">
+                    <div class="w-12 h-12 bg-black relative flex-shrink-0">
+                        <div class="absolute bottom-0 right-0 w-full h-full bg-white" style="clip-path: polygon(100% 0, 100% 100%, 0 100%);"></div>
+                        <div class="absolute top-1/2 left-1/2 w-2 h-2 bg-black -translate-x-1/2 -translate-y-1/2"></div>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-black text-xl leading-none tracking-tighter">HOLISTIC</span>
+                        <span class="font-black text-xl leading-none tracking-tighter">VENTURES</span>
+                        <div class="h-1 bg-black mt-1 w-full"></div>
+                    </div>
+                </div>
+                <p class="font-mono text-sm text-gray-600 max-w-md uppercase leading-relaxed font-bold">
+                    The parent entity overseeing global sourcing operations, heavy electronics logistics, and the Silly Socks consumer brand. Moving capital and cargo through regulated corridors.
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="font-black text-xl uppercase tracking-widest border-b-[3px] border-black pb-2 mb-6">HQ / Routing</h4>
+                <ul class="font-mono text-sm space-y-3 font-bold text-gray-800">
+                    <li>Holistic Ventures Corporate</li>
+                    <li>Dhaka, Bangladesh</li>
+                    <li class="text-gray-500 pt-2 border-t-2 border-gray-100">Status: Active Operations</li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="font-black text-xl uppercase tracking-widest border-b-[3px] border-black pb-2 mb-6">Directives</h4>
+                <ul class="font-mono text-sm space-y-2">
+                    <li class="font-black text-base uppercase">Songlap & Anhar</li>
+                    <li class="text-gray-600 font-bold uppercase">Executive Directorate</li>
+                    <li class="pt-6">
+                        <a href="mailto:contact@holisticventures.com" class="inline-block border-[3px] border-black px-4 py-2 hover:bg-black hover:text-white font-bold transition-none uppercase tracking-widest text-xs">
+                            Initiate Contact
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto border-t-[4px] border-black pt-8 flex flex-col md:flex-row justify-between items-center font-mono text-xs text-black font-bold uppercase">
+            <p>&copy; <script>document.write(new Date().getFullYear())</script> Holistic Ventures. All rights reserved.</p>
+            <p class="mt-4 md:mt-0 tracking-widest bg-black text-white px-4 py-2 border-2 border-black">RESTRICTED ACCESS / AUTHORIZED ONLY</p>
+        </div>
+    </footer>
+
 </body>
 </html>
