@@ -1,249 +1,495 @@
 <!DOCTYPE html>
-<html lang="en" style="scroll-behavior:smooth">
+<html lang="en" data-theme="light" style="scroll-behavior:smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Holistic Ventures | Global Sourcing, Freight & Customs Clearance</title>
-<meta name="description" content="Holistic Ventures sources, ships and clears electrical equipment, apparel and consumer goods through regulated global corridors. Based in Dhaka, Bangladesh.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com"></script>
-<style>
-:root{--bg:#fcfcfc;--fg:#0a0a0a;--mut:#555;--pan:#efefef;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a0a0a;--fg:#fcfcfc;--mut:#a8a8a8;--pan:#161616}}
-:root[data-theme="dark"]{--bg:#0a0a0a;--fg:#fcfcfc;--mut:#a8a8a8;--pan:#161616}
-html{scroll-padding-top:calc(6rem + env(safe-area-inset-top,0px))}
-body{background:var(--bg);color:var(--fg);font-family:"Playfair Display",Georgia,serif;margin:0}
-.mono{font-family:"Courier New",Courier,monospace}
-.bd{border-color:var(--fg)}
-.mut{color:var(--mut)}
-.inv{background:var(--fg);color:var(--bg)}
-.pan{background:var(--pan)}
-.card{transition:none}
-.card:hover{background:var(--fg);color:var(--bg)}
-.card:hover .mut{color:var(--bg);opacity:.75}
-.card:hover .ico{background:var(--bg);color:var(--fg);border-color:var(--bg)}
-.btn{display:inline-block;border:3px solid var(--fg);padding:.9rem 1.6rem;font-weight:700;text-transform:none;letter-spacing:.02em;cursor:pointer;background:transparent;color:var(--fg)}
-.btn:hover,.btn:focus-visible{background:var(--fg);color:var(--bg)}
-.btn-inv{border-color:var(--bg);background:var(--bg);color:var(--fg)}
-.btn-inv:hover,.btn-inv:focus-visible{background:var(--fg);color:var(--bg)}
-a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid currentColor;outline-offset:3px}
-.nav a{padding:.25rem .6rem;border:2px solid transparent;font-weight:700}
-.nav a:hover{background:var(--fg);color:var(--bg)}
-input,textarea{width:100%;background:var(--bg);color:var(--fg);border:3px solid var(--fg);padding:.8rem;font-family:"Courier New",Courier,monospace;font-size:.95rem;border-radius:0}
-label{font-weight:700;display:block;margin-bottom:.35rem}
-::selection{background:var(--fg);color:var(--bg)}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Holistic Ventures | Global Sourcing, Freight & Customs Clearance</title>
+    <meta name="description" content="Holistic Ventures sources, ships and clears electrical equipment, apparel and consumer goods through regulated global corridors. Based in Dhaka, Bangladesh.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        /* Base Light Theme */
+        :root {
+            --bg: #fcfcfc;
+            --fg: #0a0a0a;
+            --mut: #555555;
+            --pan: #efefef;
+            --accent: #d1d5db; /* gray-300 */
+            box-sizing: border-box;
+            padding-top: env(safe-area-inset-top, 0px);
+            padding-bottom: env(safe-area-inset-bottom, 0px);
+        }
+
+        /* Dark Theme overrides via data attribute */
+        :root[data-theme="dark"] {
+            --bg: #0a0a0a;
+            --fg: #fcfcfc;
+            --mut: #a8a8a8;
+            --pan: #161616;
+            --accent: #374151; /* gray-700 */
+        }
+
+        html { scroll-padding-top: calc(6rem + env(safe-area-inset-top, 0px)); }
+        
+        body {
+            background-color: var(--bg);
+            color: var(--fg);
+            font-family: "Playfair Display", Georgia, serif;
+            margin: 0;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .mono { font-family: "Courier New", Courier, monospace; }
+        .bd { border-color: var(--fg); }
+        .mut { color: var(--mut); }
+        .inv { background-color: var(--fg); color: var(--bg); }
+        .pan { background-color: var(--pan); }
+        
+        /* Brutalist Card Interactions */
+        .card { transition: none; }
+        .card:hover { background-color: var(--fg); color: var(--bg); }
+        .card:hover .mut { color: var(--bg); opacity: 0.75; }
+        .card:hover .ico { background-color: var(--bg); color: var(--fg); border-color: var(--bg); }
+        
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            border: 3px solid var(--fg);
+            padding: 0.9rem 1.6rem;
+            font-weight: 700;
+            text-transform: none;
+            letter-spacing: 0.02em;
+            cursor: pointer;
+            background: transparent;
+            color: var(--fg);
+            transition: background-color 0.1s, color 0.1s;
+        }
+        .btn:hover, .btn:focus-visible { background-color: var(--fg); color: var(--bg); }
+        
+        .btn-inv { border-color: var(--bg); background-color: var(--bg); color: var(--fg); }
+        .btn-inv:hover, .btn-inv:focus-visible { background-color: var(--fg); color: var(--bg); }
+        
+        a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+            outline: 3px solid var(--mut);
+            outline-offset: 3px;
+        }
+        
+        .nav a { padding: 0.25rem 0.6rem; border: 2px solid transparent; font-weight: 700; }
+        .nav a:hover { background-color: var(--fg); color: var(--bg); transition: none; }
+        
+        /* Forms */
+        input, textarea {
+            width: 100%;
+            background-color: var(--bg);
+            color: var(--fg);
+            border: 3px solid var(--fg);
+            padding: 0.8rem;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 0.95rem;
+            border-radius: 0;
+        }
+        input::placeholder, textarea::placeholder { color: var(--mut); }
+        label { font-weight: 700; display: block; margin-bottom: 0.35rem; }
+        
+        ::selection { background-color: var(--fg); color: var(--bg); }
+        
+        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto !important; } }
+
+        #loader {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background-color: var(--bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: hideLoader 0.6s ease-in-out 2.2s forwards;
+        }
+        @keyframes hideLoader {
+            100% { opacity: 0; visibility: hidden; pointer-events: none; }
+        }
+        .loader-square {
+            opacity: 0;
+            transform: scale(0.8);
+            animation: revealSquare 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+        }
+        @keyframes revealSquare {
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .loader-text {
+            opacity: 0;
+            clip-path: inset(0 100% 0 0);
+            animation: revealText 1s cubic-bezier(0.22, 1, 0.36, 1) 0.6s forwards;
+        }
+        @keyframes revealText {
+            100% { clip-path: inset(0 0 0 0); opacity: 1; }
+        }
+    </style>
+    
+    <script>
+        // Check local storage. Default to light mode unless dark is explicitly saved.
+        const savedTheme = localStorage.getItem('hv-theme');
+        if (savedTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+        }
+    </script>
 </head>
 <body class="min-h-screen flex flex-col antialiased">
 
-<header class="sticky z-50 border-b-4 bd" style="top:env(safe-area-inset-top,0px);background:var(--bg)">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-    <a href="#top" class="flex items-center gap-3" aria-label="Holistic Ventures home">
-      <span class="relative block w-12 h-12 shrink-0 inv">
-        <span class="absolute inset-0" style="background:var(--bg);clip-path:polygon(100% 0,100% 100%,0 100%)"></span>
-        <span class="absolute w-2 h-2 inv" style="top:50%;left:50%;transform:translate(-50%,-50%)"></span>
-      </span>
-      <span class="flex flex-col">
-        <span class="font-black text-xl leading-none">HOLISTIC</span>
-        <span class="font-black text-xl leading-none">VENTURES</span>
-        <span class="block h-1 inv mt-1"></span>
-      </span>
-    </a>
-    <nav class="nav hidden lg:flex items-center gap-2 text-sm" aria-label="Main">
-      <a href="#about">About</a><a href="#services">Services</a><a href="#industries">Industries</a><a href="#why">Why us</a><a href="#contact">Contact</a>
-    </nav>
-    <div class="flex items-center gap-3">
-      <a href="#quote" class="btn hidden sm:inline-block !py-2 !px-4 text-sm">Request a quote</a>
-      <button id="menuBtn" class="lg:hidden border-[3px] bd p-2" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
-        <span class="block w-6 h-0.5 mb-1.5 inv"></span><span class="block w-6 h-0.5 mb-1.5 inv"></span><span class="block w-6 h-0.5 inv"></span>
-      </button>
-    </div>
-  </div>
-  <nav id="mobileNav" class="nav hidden lg:hidden border-t-4 bd flex-col" aria-label="Mobile">
-    <a href="#about" class="block px-6 py-3 border-b-2 bd">About</a>
-    <a href="#services" class="block px-6 py-3 border-b-2 bd">Services</a>
-    <a href="#industries" class="block px-6 py-3 border-b-2 bd">Industries</a>
-    <a href="#why" class="block px-6 py-3 border-b-2 bd">Why us</a>
-    <a href="#quote" class="block px-6 py-3 border-b-2 bd">Request a quote</a>
-    <a href="#contact" class="block px-6 py-3">Contact</a>
-  </nav>
-</header>
-
-<main id="top" class="flex-grow">
-
-  <!-- Hero -->
-  <section class="inv px-4 sm:px-6 lg:px-8 pt-16 pb-14 md:pt-28 md:pb-24 border-b-4 bd">
-    <div class="max-w-7xl mx-auto max-w-4xl">
-      <p class="mono inline-block border-2 px-3 py-1 mb-6 text-xs font-bold" style="border-color:var(--bg)">Routing code HV-DHK-01</p>
-      <h1 class="font-black leading-[1.05] tracking-tight mb-8 text-5xl sm:text-7xl md:text-8xl">
-        Global trade,<br>moved with<br><em class="font-normal" style="opacity:.6">precision.</em>
-      </h1>
-      <p class="mono text-lg md:text-xl max-w-2xl mb-10 pl-6 py-2 leading-relaxed" style="border-left:4px solid var(--bg);opacity:.85">
-        We source, ship and clear heavy electrical equipment, apparel and consumer goods through regulated corridors, from the factory floor to your warehouse.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4">
-        <a href="#quote" class="btn btn-inv">Request a quote</a>
-        <a href="#services" class="btn" style="border-color:var(--bg);color:var(--bg)">Explore services</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Stats -->
-  <section class="border-b-4 bd" aria-label="Key figures">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3">
-      <div class="p-8 md:p-12 border-b-4 md:border-b-0 md:border-r-4 bd"><span class="block text-6xl md:text-7xl font-black mb-2">250+</span><span class="mono text-sm font-bold mut">Customers and companies served</span></div>
-      <div class="p-8 md:p-12 border-b-4 md:border-b-0 md:border-r-4 bd"><span class="block text-6xl md:text-7xl font-black mb-2">Tier 1</span><span class="mono text-sm font-bold mut">Electrical compliance</span></div>
-      <div class="p-8 md:p-12"><span class="block text-6xl md:text-7xl font-black mb-2">99%</span><span class="mono text-sm font-bold mut">Clearance rate</span></div>
-    </div>
-  </section>
-
-  <!-- About -->
-  <section id="about" class="px-4 sm:px-6 lg:px-8 py-20 md:py-28 border-b-4 bd">
-    <div class="max-w-7xl mx-auto grid md:grid-cols-5 gap-10 md:gap-16">
-      <h2 class="md:col-span-2 text-4xl md:text-5xl font-black leading-tight">One parent company, three trades.</h2>
-      <div class="md:col-span-3 text-lg md:text-xl leading-relaxed space-y-5" style="max-width:62ch">
-        <p>Holistic Ventures is a Dhaka-based sourcing and logistics company. We buy, move and clear goods across borders for ourselves and for partners.</p>
-        <p class="mono text-base mut">Our work covers industrial and consumer electronics, bulk apparel and textiles, and the freight and customs paperwork that sits between a supplier and a shelf. We also run Silly Socks, our own consumer brand.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services -->
-  <section id="services" class="pan px-4 sm:px-6 lg:px-8 py-20 md:py-28 border-b-4 bd">
-    <div class="max-w-7xl mx-auto">
-      <div class="mb-12">
-        <h2 class="text-4xl md:text-6xl font-black">Our services</h2>
-        <div class="w-40 h-2 inv mt-5"></div>
-        <p class="mono mut mt-6 max-w-xl font-bold">Four service lines, built around your cargo and your compliance requirements.</p>
-      </div>
-      <div class="grid md:grid-cols-2 border-4 bd" style="background:var(--bg)">
-        <article class="card p-10 md:p-12 border-b-4 md:border-r-4 bd min-h-[320px] flex flex-col justify-between">
-          <div>
-            <span class="ico inline-block border-[3px] bd p-3 mb-6"><svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
-            <h3 class="text-3xl font-black leading-tight mb-4">Electrical procurement</h3>
-          </div>
-          <p class="mono text-sm leading-relaxed mut font-bold">We source industrial components, heavy circuitry and consumer electronics, and track them from the factory to the final warehouse.</p>
-        </article>
-        <article class="card p-10 md:p-12 border-b-4 bd min-h-[320px] flex flex-col justify-between">
-          <div>
-            <span class="ico inline-block border-[3px] bd p-3 mb-6"><svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg></span>
-            <h3 class="text-3xl font-black leading-tight mb-3">Apparel and textiles</h3>
-            <p class="mono inline-block text-xs font-bold px-2 py-1 mb-5 inv">Operating brand: Silly Socks</p>
-          </div>
-          <p class="mono text-sm leading-relaxed mut font-bold">Bulk transit of knitwear and novelty consumer fashion, with large shipments handled as one managed movement.</p>
-        </article>
-        <article class="card p-10 md:p-12 border-b-4 md:border-b-0 md:border-r-4 bd min-h-[320px] flex flex-col justify-between">
-          <div>
-            <span class="ico inline-block border-[3px] bd p-3 mb-6"><svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="m9 15 2 2 4-4"/></svg></span>
-            <h3 class="text-3xl font-black leading-tight mb-4">Customs clearance</h3>
-          </div>
-          <p class="mono text-sm leading-relaxed mut font-bold">We prepare the documents and handle the filings so cargo moves from port to warehouse without avoidable delays.</p>
-        </article>
-        <article class="card p-10 md:p-12 min-h-[320px] flex flex-col justify-between">
-          <div>
-            <span class="ico inline-block border-[3px] bd p-3 mb-6"><svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="5" r="3"/><line x1="12" y1="22" x2="12" y2="8"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/></svg></span>
-            <h3 class="text-3xl font-black leading-tight mb-4">Global freight</h3>
-          </div>
-          <p class="mono text-sm leading-relaxed mut font-bold">Air, sea and land transport coordinated door to door, with the route and schedule visible from pickup to delivery.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Industries -->
-  <section id="industries" class="px-4 sm:px-6 lg:px-8 py-20 md:py-28 border-b-4 bd">
-    <div class="max-w-7xl mx-auto">
-      <h2 class="text-4xl md:text-6xl font-black">Industries we serve</h2>
-      <div class="w-40 h-2 inv mt-5 mb-12"></div>
-      <div class="grid md:grid-cols-3 border-4 bd">
-        <div class="card p-8 md:p-10 border-b-4 md:border-b-0 md:border-r-4 bd">
-          <h3 class="text-2xl font-black mb-3">Electrical and infrastructure</h3>
-          <p class="mono text-sm mut font-bold leading-relaxed">Industrial components and heavy circuitry that need compliance checks before they ship.</p>
+    <div id="loader">
+        <div class="flex items-center gap-5 md:gap-6">
+            <span class="loader-square relative block w-20 h-20 md:w-24 md:h-24 shrink-0 inv">
+                <span class="absolute inset-0" style="background-color: var(--bg); clip-path: polygon(100% 0, 100% 100%, 0 100%);"></span>
+                <span class="absolute w-3 h-3 md:w-4 md:h-4 inv" style="top: 50%; left: 50%; transform: translate(-50%, -50%);"></span>
+            </span>
+            <span class="loader-text flex flex-col">
+                <span class="font-black text-4xl md:text-5xl leading-none tracking-tight">HOLISTIC</span>
+                <span class="font-black text-4xl md:text-5xl leading-none tracking-tight">VENTURES</span>
+                <span class="block h-1.5 md:h-2 inv mt-1.5"></span>
+            </span>
         </div>
-        <div class="card p-8 md:p-10 border-b-4 md:border-b-0 md:border-r-4 bd">
-          <h3 class="text-2xl font-black mb-3">Apparel and textiles</h3>
-          <p class="mono text-sm mut font-bold leading-relaxed">Knitwear and fashion goods in bulk, moved on fixed schedules to keep stock on shelves.</p>
+    </div>
+
+    <header class="sticky z-50 border-b-4 bd" style="top:env(safe-area-inset-top,0px); background-color: var(--bg);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#top" class="flex items-center gap-3 group" aria-label="Holistic Ventures home">
+                <span class="relative block w-12 h-12 shrink-0 inv group-hover:opacity-90">
+                    <span class="absolute inset-0" style="background-color: var(--bg); clip-path: polygon(100% 0, 100% 100%, 0 100%);"></span>
+                    <span class="absolute w-2 h-2 inv" style="top: 50%; left: 50%; transform: translate(-50%, -50%);"></span>
+                </span>
+                <span class="flex flex-col">
+                    <span class="font-black text-xl leading-none">HOLISTIC</span>
+                    <span class="font-black text-xl leading-none">VENTURES</span>
+                    <span class="block h-1 inv mt-1"></span>
+                </span>
+            </a>
+            
+            <nav class="nav hidden lg:flex items-center gap-4 text-sm" aria-label="Main">
+                <a href="#about">Corporate</a>
+                <a href="#services">Operations</a>
+                <a href="#industries">Sectors</a>
+                <a href="#why">Advantage</a>
+                <a href="#contact">Directory</a>
+            </nav>
+            
+            <div class="flex items-center gap-3">
+                <!-- Theme Toggle Button -->
+                <button id="themeToggle" class="p-2 border-[3px] bd hover:bg-[var(--fg)] hover:text-[var(--bg)] transition-colors" aria-label="Toggle Dark Mode">
+                    <!-- Sun Icon (Hidden in Light Mode by default via CSS logic in JS) -->
+                    <svg id="icon-sun" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    <!-- Moon Icon (Hidden in Dark Mode) -->
+                    <svg id="icon-moon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </button>
+
+                <a href="#quote" class="btn hidden sm:inline-block !py-2 !px-4 text-sm">Request a quote</a>
+                <button id="menuBtn" class="lg:hidden border-[3px] bd p-2 hover:bg-[var(--fg)] hover:text-[var(--bg)]" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+                    <span class="block w-6 h-0.5 mb-1.5 inv group-hover:bg-[var(--bg)]"></span>
+                    <span class="block w-6 h-0.5 mb-1.5 inv group-hover:bg-[var(--bg)]"></span>
+                    <span class="block w-6 h-0.5 inv group-hover:bg-[var(--bg)]"></span>
+                </button>
+            </div>
         </div>
-        <div class="card p-8 md:p-10">
-          <h3 class="text-2xl font-black mb-3">Consumer products</h3>
-          <p class="mono text-sm mut font-bold leading-relaxed">Small consumer electronics and novelty goods for direct-to-customer brands.</p>
+        
+        <nav id="mobileNav" class="nav hidden lg:hidden border-t-4 bd flex-col" aria-label="Mobile">
+            <a href="#about" class="block px-6 py-3 border-b-2 bd">Corporate</a>
+            <a href="#services" class="block px-6 py-3 border-b-2 bd">Operations</a>
+            <a href="#industries" class="block px-6 py-3 border-b-2 bd">Sectors</a>
+            <a href="#why" class="block px-6 py-3 border-b-2 bd">Advantage</a>
+            <a href="#quote" class="block px-6 py-3 border-b-2 bd">Request a quote</a>
+            <a href="#contact" class="block px-6 py-3">Directory</a>
+        </nav>
+    </header>
+
+    <main id="top" class="flex-grow">
+
+        <div class="border-b-4 bd inv py-2.5 px-4 sm:px-6 lg:px-8 mono text-xs font-bold tracking-widest uppercase flex flex-col sm:flex-row justify-center md:justify-between items-center gap-2 sm:gap-4 text-center">
+            <div class="flex items-center gap-2">
+                <span class="w-2 h-2 bg-[var(--bg)] animate-pulse" style="animation-duration: 2s;"></span>
+                <span>Network Status: Optimal</span>
+            </div>
+            <div class="flex flex-wrap justify-center gap-3 sm:gap-6 opacity-90">
+                <span>Active Routing: HV-DHK-01</span>
+                <span class="hidden md:inline">|</span>
+                <span class="hidden md:inline">Clearance Efficiency: 99.2%</span>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Why -->
-  <section id="why" class="pan px-4 sm:px-6 lg:px-8 py-20 md:py-28 border-b-4 bd">
-    <div class="max-w-7xl mx-auto">
-      <h2 class="text-4xl md:text-6xl font-black max-w-3xl">Built around your cargo, not around a script.</h2>
-      <div class="w-40 h-2 inv mt-5 mb-12"></div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="border-[3px] bd p-6" style="background:var(--bg)"><h3 class="text-xl font-black mb-2">Compliance first</h3><p class="mono text-sm mut font-bold leading-relaxed">Paperwork is checked before the cargo moves, not after it is held.</p></div>
-        <div class="border-[3px] bd p-6" style="background:var(--bg)"><h3 class="text-xl font-black mb-2">Factory to warehouse</h3><p class="mono text-sm mut font-bold leading-relaxed">Sourcing, freight and clearance run under one roof.</p></div>
-        <div class="border-[3px] bd p-6" style="background:var(--bg)"><h3 class="text-xl font-black mb-2">Route visibility</h3><p class="mono text-sm mut font-bold leading-relaxed">You can see where a shipment is and what happens next.</p></div>
-        <div class="border-[3px] bd p-6" style="background:var(--bg)"><h3 class="text-xl font-black mb-2">One point of contact</h3><p class="mono text-sm mut font-bold leading-relaxed">You talk to the person handling your shipment, not a ticket queue.</p></div>
-      </div>
-    </div>
-  </section>
+        <section class="pan px-4 sm:px-6 lg:px-8 pt-16 pb-14 md:pt-28 md:pb-24 border-b-4 bd">
+            <div class="max-w-7xl mx-auto max-w-4xl">
+                <p class="mono inline-block border-2 bd px-3 py-1 mb-6 text-xs font-bold uppercase tracking-widest bg-[var(--bg)]">Global Syndicate</p>
+                <h1 class="font-black leading-[1.05] tracking-tight mb-8 text-5xl sm:text-7xl md:text-8xl">
+                    Global trade,<br>moved with<br><em class="font-normal" style="opacity:.6">precision.</em>
+                </h1>
+                <p class="mono text-lg md:text-xl max-w-2xl mb-10 pl-6 py-2 leading-relaxed font-bold bd" style="border-left-width: 4px; opacity:.85">
+                    We source, ship and clear heavy electrical equipment, apparel and consumer goods through regulated corridors, from the factory floor to your warehouse.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#quote" class="btn inv">Initiate Dispatch</a>
+                    <a href="#services" class="btn bg-[var(--bg)]">Explore Operations</a>
+                </div>
+            </div>
+        </section>
 
-  <!-- Quote -->
-  <section id="quote" class="inv px-4 sm:px-6 lg:px-8 py-20 md:py-28 border-b-4 bd">
-    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12">
-      <div>
-        <h2 class="text-4xl md:text-6xl font-black leading-tight mb-6">Ready to move your next shipment?</h2>
-        <p class="mono text-lg leading-relaxed" style="opacity:.85;max-width:44ch">Tell us what you are shipping and where it is going. We will reply by email with a quote.</p>
-      </div>
-      <div id="quoteBox" class="p-6 md:p-8" style="background:var(--bg);color:var(--fg)">
-        <div class="mb-5"><label for="qn">Your name</label><input id="qn" type="text" autocomplete="name"></div>
-        <div class="mb-5"><label for="qr">Route (from and to)</label><input id="qr" type="text" placeholder="e.g. Guangzhou to Chattogram"></div>
-        <div class="mb-6"><label for="qc">What are you shipping?</label><textarea id="qc" rows="3" placeholder="Cargo type, quantity, weight"></textarea></div>
-        <button id="qsend" class="btn" type="button">Send by email</button>
-        <p class="mono text-xs mut font-bold mt-4">This opens your email app with the details filled in.</p>
-      </div>
-    </div>
-  </section>
+        <section class="border-b-4 bd bg-[var(--bg)]" aria-label="Key figures">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3">
+                <div class="p-8 md:p-12 border-b-4 md:border-b-0 md:border-r-4 bd hover:bg-[var(--fg)] hover:text-[var(--bg)] transition-colors group">
+                    <span class="block text-6xl md:text-7xl font-black mb-2">250+</span>
+                    <span class="mono text-sm font-bold mut group-hover:text-[var(--bg)] group-hover:opacity-75 uppercase tracking-wide">Partners & Entities Served</span>
+                </div>
+                <div class="p-8 md:p-12 border-b-4 md:border-b-0 md:border-r-4 bd hover:bg-[var(--fg)] hover:text-[var(--bg)] transition-colors group">
+                    <span class="block text-6xl md:text-7xl font-black mb-2">Tier 1</span>
+                    <span class="mono text-sm font-bold mut group-hover:text-[var(--bg)] group-hover:opacity-75 uppercase tracking-wide">Electrical Compliance</span>
+                </div>
+                <div class="p-8 md:p-12 hover:bg-[var(--fg)] hover:text-[var(--bg)] transition-colors group">
+                    <span class="block text-6xl md:text-7xl font-black mb-2">99.2%</span>
+                    <span class="mono text-sm font-bold mut group-hover:text-[var(--bg)] group-hover:opacity-75 uppercase tracking-wide">Clearance Rate</span>
+                </div>
+            </div>
+        </section>
 
-</main>
+        <section id="about" class="pan px-4 sm:px-6 lg:px-8 py-20 md:py-28 border-b-4 bd">
+            <div class="max-w-7xl mx-auto grid md:grid-cols-5 gap-10 md:gap-16">
+                <h2 class="md:col-span-2 text-4xl md:text-5xl font-black leading-tight">One governing entity.<br>Multiple sectors.</h2>
+                <div class="md:col-span-3 text-lg md:text-xl leading-relaxed space-y-6 font-medium" style="max-width:62ch">
+                    <p>Holistic Ventures is a prominent Dhaka-based sourcing and logistics holding company. We buy, move, and clear high-value goods across borders, acting as the silent engine for global supply chains.</p>
+                    <p class="mono text-base mut font-bold">
+                        Our internal divisions handle the complexities of industrial electronics, bulk textiles, and strict customs compliance. We manage the freight and the paperwork that bridges the gap between international suppliers and final retail shelves. We also act as the parent company for a portfolio of proprietary consumer brands.
+                    </p>
+                </div>
+            </div>
+        </section>
 
-<footer id="contact" class="px-4 sm:px-6 lg:px-8 pt-16 pb-8">
-  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-14">
-    <div class="md:col-span-2">
-      <p class="font-black text-2xl mb-4">Holistic Ventures</p>
-      <p class="mono text-sm mut font-bold leading-relaxed" style="max-width:52ch">The parent company behind our global sourcing, electrical logistics and the Silly Socks consumer brand.</p>
-    </div>
-    <div>
-      <h3 class="font-black text-lg border-b-[3px] bd pb-2 mb-4">Company</h3>
-      <ul class="mono text-sm font-bold space-y-2">
-        <li><a href="#about" class="underline">About</a></li><li><a href="#services" class="underline">Services</a></li><li><a href="#industries" class="underline">Industries</a></li><li><a href="#why" class="underline">Why us</a></li>
-      </ul>
-    </div>
-    <div>
-      <h3 class="font-black text-lg border-b-[3px] bd pb-2 mb-4">Contact</h3>
-      <ul class="mono text-sm font-bold space-y-2">
-        <li>Dhaka, Bangladesh</li>
-        <li><a href="mailto:tauhidnoman1@gmail.com" class="underline">tauhidnoman1@gmail.com</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="max-w-7xl mx-auto border-t-4 bd pt-6 mono text-xs font-bold flex flex-col md:flex-row justify-between gap-3">
-    <p>&copy; <span id="yr">2026</span> Holistic Ventures. All rights reserved.</p>
-    <p>Dhaka, Bangladesh</p>
-  </div>
-</footer>
+        <section id="services" class="px-4 sm:px-6 lg:px-8 py-20 md:py-28 border-b-4 bd bg-[var(--bg)]">
+            <div class="max-w-7xl mx-auto">
+                <div class="mb-12">
+                    <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tighter">Active Divisions</h2>
+                    <div class="w-40 h-2 inv mt-5"></div>
+                    <p class="mono mut mt-6 max-w-xl font-bold uppercase tracking-widest text-sm">Strategic departments engineered for specific cargo requirements.</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 border-4 bd">
+                    <!-- Electrical -->
+                    <article class="card p-10 md:p-12 border-b-4 md:border-r-4 bd min-h-[320px] flex flex-col justify-between">
+                        <div>
+                            <span class="ico inline-block border-[3px] bd p-3 mb-6">
+                                <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                            </span>
+                            <h3 class="text-3xl font-black leading-tight mb-4 uppercase">Electrical Procurement</h3>
+                        </div>
+                        <p class="mono text-sm leading-relaxed mut font-bold">We source industrial components, heavy circuitry and consumer electronics, verifying technical compliance and tracking them from the factory to the final warehouse.</p>
+                    </article>
+                    
+                    <!-- Textiles -->
+                    <article class="card p-10 md:p-12 border-b-4 bd min-h-[320px] flex flex-col justify-between">
+                        <div>
+                            <span class="ico inline-block border-[3px] bd p-3 mb-6">
+                                <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg>
+                            </span>
+                            <h3 class="text-3xl font-black leading-tight mb-3 uppercase">Apparel & Textiles</h3>
+                            <p class="mono inline-block text-xs font-bold px-2 py-1 mb-5 inv uppercase tracking-wider">Division: Consumer Retail</p>
+                        </div>
+                        <p class="mono text-sm leading-relaxed mut font-bold">Bulk transit of knitwear and novelty consumer fashion. Managing massive volumetric shipments with zero inventory loss.</p>
+                    </article>
+                    
+                    <!-- Customs -->
+                    <article class="card p-10 md:p-12 border-b-4 md:border-b-0 md:border-r-4 bd min-h-[320px] flex flex-col justify-between">
+                        <div>
+                            <span class="ico inline-block border-[3px] bd p-3 mb-6">
+                                <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="m9 15 2 2 4-4"/></svg>
+                            </span>
+                            <h3 class="text-3xl font-black leading-tight mb-4 uppercase">Customs Clearance</h3>
+                        </div>
+                        <p class="mono text-sm leading-relaxed mut font-bold">Navigating bureaucratic bottlenecks seamlessly. We prepare the documents and handle the filings so cargo moves rapidly from port to warehouse.</p>
+                    </article>
+                    
+                    <!-- Freight -->
+                    <article class="card p-10 md:p-12 min-h-[320px] flex flex-col justify-between">
+                        <div>
+                            <span class="ico inline-block border-[3px] bd p-3 mb-6">
+                                <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="5" r="3"/><line x1="12" y1="22" x2="12" y2="8"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/></svg>
+                            </span>
+                            <h3 class="text-3xl font-black leading-tight mb-4 uppercase">Global Freight</h3>
+                        </div>
+                        <p class="mono text-sm leading-relaxed mut font-bold">Air, sea and land transport synchronized perfectly. Total oversight over shipping routes, ensuring cargo remains untampered and on schedule.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
 
-<script>
-document.getElementById('yr').textContent=new Date().getFullYear();
-var mb=document.getElementById('menuBtn'),mn=document.getElementById('mobileNav');
-mb.addEventListener('click',function(){var o=mn.classList.toggle('hidden');mb.setAttribute('aria-expanded',String(!o));mn.style.display=o?'':'flex'});
-mn.addEventListener('click',function(e){if(e.target.tagName==='A'){mn.classList.add('hidden');mn.style.display='';mb.setAttribute('aria-expanded','false')}});
-document.getElementById('qsend').addEventListener('click',function(){
-  var n=document.getElementById('qn').value.trim(),r=document.getElementById('qr').value.trim(),c=document.getElementById('qc').value.trim();
-  var body='Name: '+n+'\nRoute: '+r+'\nCargo: '+c;
-  location.href='mailto:tauhidnoman1@gmail.com?subject='+encodeURIComponent('Quote request')+'&body='+encodeURIComponent(body);
-});
-</script>
+        <section id="industries" class="pan px-4 sm:px-6 lg:px-8 py-20 md:py-28 border-b-4 bd">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tighter">Sectors Serviced</h2>
+                <div class="w-40 h-2 inv mt-5 mb-12"></div>
+                <div class="grid md:grid-cols-3 border-4 bd bg-[var(--bg)]">
+                    <div class="card p-8 md:p-10 border-b-4 md:border-b-0 md:border-r-4 bd">
+                        <h3 class="text-2xl font-black mb-3 uppercase">Infrastructure</h3>
+                        <p class="mono text-sm mut font-bold leading-relaxed">Industrial electrical components and heavy circuitry requiring tier-1 compliance checks prior to export.</p>
+                    </div>
+                    <div class="card p-8 md:p-10 border-b-4 md:border-b-0 md:border-r-4 bd">
+                        <h3 class="text-2xl font-black mb-3 uppercase">Retail Fashion</h3>
+                        <p class="mono text-sm mut font-bold leading-relaxed">Knitwear and novelty fashion goods in bulk, moved on strict schedules to maintain retail inventory cycles.</p>
+                    </div>
+                    <div class="card p-8 md:p-10">
+                        <h3 class="text-2xl font-black mb-3 uppercase">Consumer Goods</h3>
+                        <p class="mono text-sm mut font-bold leading-relaxed">High-volume consumer electronics, accessories, and packaged goods for direct-to-customer brands.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="quote" class="px-4 sm:px-6 lg:px-8 py-20 md:py-28 border-b-4 bd bg-[var(--bg)]">
+            <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="inline-block border-2 bd px-3 py-1 mb-6">
+                        <span class="mono text-xs font-bold tracking-widest uppercase">Direct Secure Line</span>
+                    </div>
+                    <h2 class="text-4xl md:text-6xl font-black leading-tight mb-6 uppercase tracking-tighter">Initiate a Shipment Request.</h2>
+                    <p class="mono text-lg leading-relaxed mut font-bold" style="max-width:44ch">
+                        Submit your manifest details. Our logistics officers will review your cargo requirements and respond with a formal quote and routing plan.
+                    </p>
+                </div>
+                
+                <div id="quoteBox" class="p-8 border-4 bd pan">
+                    <div class="mb-5">
+                        <label class="uppercase font-black tracking-widest text-sm" for="qn">Corporate Entity / Name</label>
+                        <input id="qn" type="text" autocomplete="name" class="focus:bg-[var(--pan)]">
+                    </div>
+                    <div class="mb-5">
+                        <label class="uppercase font-black tracking-widest text-sm" for="qr">Transit Route (Origin to Destination)</label>
+                        <input id="qr" type="text" placeholder="e.g. Shenzhen to Dhaka Port" class="focus:bg-[var(--pan)]">
+                    </div>
+                    <div class="mb-6">
+                        <label class="uppercase font-black tracking-widest text-sm" for="qc">Cargo Specifications</label>
+                        <textarea id="qc" rows="3" placeholder="Category, estimated volume/weight, compliance needs" class="focus:bg-[var(--pan)]"></textarea>
+                    </div>
+                    <button id="qsend" class="btn inv w-full text-center uppercase tracking-widest" type="button">Transmit Request</button>
+                    <p class="mono text-xs mut font-bold mt-4 text-center">This will securely format your request via your default email client.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="contact" class="pan px-4 sm:px-6 lg:px-8 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-14">
+            <div class="md:col-span-2">
+                <a href="#top" class="flex items-center gap-3 mb-4 group" aria-label="Holistic Ventures home">
+                    <span class="relative block w-10 h-10 shrink-0 inv">
+                        <span class="absolute inset-0" style="background-color: var(--pan); clip-path: polygon(100% 0, 100% 100%, 0 100%);"></span>
+                        <span class="absolute w-1.5 h-1.5 inv" style="top: 50%; left: 50%; transform: translate(-50%, -50%);"></span>
+                    </span>
+                    <span class="flex flex-col">
+                        <span class="font-black text-lg leading-none">HOLISTIC</span>
+                        <span class="font-black text-lg leading-none">VENTURES</span>
+                    </span>
+                </a>
+                <p class="mono text-sm mut font-bold leading-relaxed uppercase" style="max-width:52ch">
+                    The parent entity overseeing global sourcing operations, heavy electronics logistics, and a portfolio of proprietary consumer brands. Moving capital and cargo through regulated corridors.
+                </p>
+            </div>
+            
+            <div>
+                <h3 class="font-black text-lg uppercase tracking-widest border-b-[3px] bd pb-2 mb-4">Directives</h3>
+                <ul class="mono text-sm font-bold space-y-2 uppercase">
+                    <li><a href="#about" class="hover:underline">Corporate Summary</a></li>
+                    <li><a href="#services" class="hover:underline">Active Divisions</a></li>
+                    <li><a href="#industries" class="hover:underline">Sectors Serviced</a></li>
+                    <li><a href="#why" class="hover:underline">Logistical Advantage</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3 class="font-black text-lg uppercase tracking-widest border-b-[3px] bd pb-2 mb-4">HQ / Routing</h3>
+                <ul class="mono text-sm font-bold space-y-2">
+                    <li class="uppercase text-[var(--fg)] font-black">Office of the Directorate</li>
+                    <li>Dhaka, Bangladesh</li>
+                    <li class="pt-2">
+                        <a href="#" id="secureComm" class="inline-block border-2 bd px-3 py-1 hover:bg-[var(--fg)] hover:text-[var(--bg)] transition-colors uppercase tracking-widest text-xs">
+                            Initiate Secure Comm
+                        </a>
+                    </li>
+                    <li class="text-[var(--mut)] pt-2 border-t-2 bd mt-4 uppercase text-xs tracking-widest">Status: Active Operations</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto border-t-4 bd pt-6 mono text-xs font-bold flex flex-col md:flex-row justify-between items-center gap-3 uppercase tracking-widest">
+            <p>&copy; <span id="yr">2026</span> Holistic Ventures. All rights reserved.</p>
+            <p class="inv px-3 py-1">RESTRICTED ACCESS / AUTHORIZED ONLY</p>
+        </div>
+    </footer>
+
+    <script>
+        // Update Copyright Year
+        document.getElementById('yr').textContent = new Date().getFullYear();
+        
+        // Mobile Navigation Toggle
+        const mb = document.getElementById('menuBtn');
+        const mn = document.getElementById('mobileNav');
+        mb.addEventListener('click', function() {
+            const isHidden = mn.classList.toggle('hidden');
+            mb.setAttribute('aria-expanded', String(!isHidden));
+            mn.style.display = isHidden ? '' : 'flex';
+        });
+        
+        mn.addEventListener('click', function(e) {
+            if(e.target.tagName === 'A') {
+                mn.classList.add('hidden');
+                mn.style.display = '';
+                mb.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // Email Quote Form
+        document.getElementById('qsend').addEventListener('click', function() {
+            const n = document.getElementById('qn').value.trim();
+            const r = document.getElementById('qr').value.trim();
+            const c = document.getElementById('qc').value.trim();
+            const body = 'Corporate Entity: ' + n + '\nRouting: ' + r + '\nCargo Specifications: ' + c;
+            location.href = 'mailto:tauhidnoman1@gmail.com?subject=' + encodeURIComponent('Freight/Routing Quote Request') + '&body=' + encodeURIComponent(body);
+        });
+
+        // Hidden Email Logic (Anti-Spam)
+        document.getElementById('secureComm').addEventListener('click', function(e) {
+            e.preventDefault();
+            const usr = 'tauhidnoman1';
+            const dom = 'gmail.com';
+            location.href = 'mailto:' + usr + '@' + dom;
+        });
+
+        // Dark/Light Theme Toggle Logic
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const iconSun = document.getElementById('icon-sun');
+        const iconMoon = document.getElementById('icon-moon');
+        const htmlElement = document.documentElement;
+
+        function updateIconVisibility(theme) {
+            if (theme === 'dark') {
+                iconSun.classList.remove('hidden');
+                iconMoon.classList.add('hidden');
+            } else {
+                iconSun.classList.add('hidden');
+                iconMoon.classList.remove('hidden');
+            }
+        }
+
+        // Initialize icons based on current theme
+        updateIconVisibility(htmlElement.getAttribute('data-theme'));
+
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('hv-theme', newTheme);
+            updateIconVisibility(newTheme);
+        });
+    </script>
 </body>
 </html>
