@@ -1,240 +1,249 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" style="scroll-behavior:smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Holistic Ventures | Global Procurement</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"Playfair Display"', 'Georgia', 'serif'],
-                        mono: ['Courier New', 'Courier', 'monospace'],
-                    },
-                    colors: {
-                        black: '#0a0a0a',
-                        white: '#fcfcfc',
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        /* Custom scrollbar for a brutalist feel */
-        ::-webkit-scrollbar { width: 12px; }
-        ::-webkit-scrollbar-track { background: #fcfcfc; border-left: 2px solid #0a0a0a; }
-        ::-webkit-scrollbar-thumb { background: #0a0a0a; }
-        
-        /* Brutalist selection color */
-        ::selection { background: #0a0a0a; color: #fcfcfc; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Holistic Ventures | Global Sourcing, Freight & Customs Clearance</title>
+<meta name="description" content="Holistic Ventures sources, ships and clears electrical equipment, apparel and consumer goods through regulated global corridors. Based in Dhaka, Bangladesh.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+:root{--bg:#fcfcfc;--fg:#0a0a0a;--mut:#555;--pan:#efefef;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a0a0a;--fg:#fcfcfc;--mut:#a8a8a8;--pan:#161616}}
+:root[data-theme="dark"]{--bg:#0a0a0a;--fg:#fcfcfc;--mut:#a8a8a8;--pan:#161616}
+html{scroll-padding-top:calc(6rem + env(safe-area-inset-top,0px))}
+body{background:var(--bg);color:var(--fg);font-family:"Playfair Display",Georgia,serif;margin:0}
+.mono{font-family:"Courier New",Courier,monospace}
+.bd{border-color:var(--fg)}
+.mut{color:var(--mut)}
+.inv{background:var(--fg);color:var(--bg)}
+.pan{background:var(--pan)}
+.card{transition:none}
+.card:hover{background:var(--fg);color:var(--bg)}
+.card:hover .mut{color:var(--bg);opacity:.75}
+.card:hover .ico{background:var(--bg);color:var(--fg);border-color:var(--bg)}
+.btn{display:inline-block;border:3px solid var(--fg);padding:.9rem 1.6rem;font-weight:700;text-transform:none;letter-spacing:.02em;cursor:pointer;background:transparent;color:var(--fg)}
+.btn:hover,.btn:focus-visible{background:var(--fg);color:var(--bg)}
+.btn-inv{border-color:var(--bg);background:var(--bg);color:var(--fg)}
+.btn-inv:hover,.btn-inv:focus-visible{background:var(--fg);color:var(--bg)}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid currentColor;outline-offset:3px}
+.nav a{padding:.25rem .6rem;border:2px solid transparent;font-weight:700}
+.nav a:hover{background:var(--fg);color:var(--bg)}
+input,textarea{width:100%;background:var(--bg);color:var(--fg);border:3px solid var(--fg);padding:.8rem;font-family:"Courier New",Courier,monospace;font-size:.95rem;border-radius:0}
+label{font-weight:700;display:block;margin-bottom:.35rem}
+::selection{background:var(--fg);color:var(--bg)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}}
+</style>
 </head>
-<body class="bg-white text-black font-sans antialiased flex flex-col min-h-screen">
+<body class="min-h-screen flex flex-col antialiased">
 
-    <header class="border-b-[4px] border-black bg-white sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-24 flex items-center justify-between">
-            
-            <!-- Custom Logo Implementation based on your design -->
-            <div class="flex items-center space-x-4 cursor-pointer hover:opacity-80 transition-none">
-                <!-- Geometric Square Icon -->
-                <div class="w-14 h-14 bg-black relative flex-shrink-0">
-                    <!-- White diagonal cut -->
-                    <div class="absolute bottom-0 right-0 w-full h-full bg-white" style="clip-path: polygon(100% 0, 100% 100%, 0 100%);"></div>
-                    <!-- Small center notch -->
-                    <div class="absolute top-1/2 left-1/2 w-2.5 h-2.5 bg-black -translate-x-1/2 -translate-y-1/2"></div>
-                </div>
-                <!-- Typography -->
-                <div class="flex flex-col">
-                    <span class="font-black text-2xl leading-none tracking-wide">HOLISTIC</span>
-                    <span class="font-black text-2xl leading-none tracking-wide">VENTURES</span>
-                    <div class="h-1 bg-black mt-1 w-full"></div>
-                </div>
-            </div>
+<header class="sticky z-50 border-b-4 bd" style="top:env(safe-area-inset-top,0px);background:var(--bg)">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-3" aria-label="Holistic Ventures home">
+      <span class="relative block w-12 h-12 shrink-0 inv">
+        <span class="absolute inset-0" style="background:var(--bg);clip-path:polygon(100% 0,100% 100%,0 100%)"></span>
+        <span class="absolute w-2 h-2 inv" style="top:50%;left:50%;transform:translate(-50%,-50%)"></span>
+      </span>
+      <span class="flex flex-col">
+        <span class="font-black text-xl leading-none">HOLISTIC</span>
+        <span class="font-black text-xl leading-none">VENTURES</span>
+        <span class="block h-1 inv mt-1"></span>
+      </span>
+    </a>
+    <nav class="nav hidden lg:flex items-center gap-2 text-sm" aria-label="Main">
+      <a href="#about">About</a><a href="#services">Services</a><a href="#industries">Industries</a><a href="#why">Why us</a><a href="#contact">Contact</a>
+    </nav>
+    <div class="flex items-center gap-3">
+      <a href="#quote" class="btn hidden sm:inline-block !py-2 !px-4 text-sm">Request a quote</a>
+      <button id="menuBtn" class="lg:hidden border-[3px] bd p-2" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+        <span class="block w-6 h-0.5 mb-1.5 inv"></span><span class="block w-6 h-0.5 mb-1.5 inv"></span><span class="block w-6 h-0.5 inv"></span>
+      </button>
+    </div>
+  </div>
+  <nav id="mobileNav" class="nav hidden lg:hidden border-t-4 bd flex-col" aria-label="Mobile">
+    <a href="#about" class="block px-6 py-3 border-b-2 bd">About</a>
+    <a href="#services" class="block px-6 py-3 border-b-2 bd">Services</a>
+    <a href="#industries" class="block px-6 py-3 border-b-2 bd">Industries</a>
+    <a href="#why" class="block px-6 py-3 border-b-2 bd">Why us</a>
+    <a href="#quote" class="block px-6 py-3 border-b-2 bd">Request a quote</a>
+    <a href="#contact" class="block px-6 py-3">Contact</a>
+  </nav>
+</header>
 
-            <!-- Desktop Navigation -->
-            <nav class="hidden md:flex space-x-8">
-                <a href="#about" class="text-sm font-bold uppercase tracking-widest hover:bg-black hover:text-white px-2 py-1 transition-none border-2 border-transparent hover:border-black">Operations</a>
-                <a href="#divisions" class="text-sm font-bold uppercase tracking-widest hover:bg-black hover:text-white px-2 py-1 transition-none border-2 border-transparent hover:border-black">Divisions</a>
-                <a href="#contact" class="text-sm font-bold uppercase tracking-widest hover:bg-black hover:text-white px-2 py-1 transition-none border-2 border-transparent hover:border-black">Contact</a>
-            </nav>
+<main id="top" class="flex-grow">
 
-            <!-- Mobile Menu Button -->
-            <button class="md:hidden border-2 border-black p-2 hover:bg-black hover:text-white transition-none focus:outline-none focus:bg-black focus:text-white">
-                <div class="w-6 h-0.5 bg-current mb-1.5"></div>
-                <div class="w-6 h-0.5 bg-current mb-1.5"></div>
-                <div class="w-6 h-0.5 bg-current"></div>
-            </button>
+  <!-- Hero -->
+  <section class="inv px-4 sm:px-6 lg:px-8 pt-16 pb-14 md:pt-28 md:pb-24 border-b-4 bd">
+    <div class="max-w-7xl mx-auto max-w-4xl">
+      <p class="mono inline-block border-2 px-3 py-1 mb-6 text-xs font-bold" style="border-color:var(--bg)">Routing code HV-DHK-01</p>
+      <h1 class="font-black leading-[1.05] tracking-tight mb-8 text-5xl sm:text-7xl md:text-8xl">
+        Global trade,<br>moved with<br><em class="font-normal" style="opacity:.6">precision.</em>
+      </h1>
+      <p class="mono text-lg md:text-xl max-w-2xl mb-10 pl-6 py-2 leading-relaxed" style="border-left:4px solid var(--bg);opacity:.85">
+        We source, ship and clear heavy electrical equipment, apparel and consumer goods through regulated corridors, from the factory floor to your warehouse.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="#quote" class="btn btn-inv">Request a quote</a>
+        <a href="#services" class="btn" style="border-color:var(--bg);color:var(--bg)">Explore services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="border-b-4 bd" aria-label="Key figures">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3">
+      <div class="p-8 md:p-12 border-b-4 md:border-b-0 md:border-r-4 bd"><span class="block text-6xl md:text-7xl font-black mb-2">250+</span><span class="mono text-sm font-bold mut">Customers and companies served</span></div>
+      <div class="p-8 md:p-12 border-b-4 md:border-b-0 md:border-r-4 bd"><span class="block text-6xl md:text-7xl font-black mb-2">Tier 1</span><span class="mono text-sm font-bold mut">Electrical compliance</span></div>
+      <div class="p-8 md:p-12"><span class="block text-6xl md:text-7xl font-black mb-2">99%</span><span class="mono text-sm font-bold mut">Clearance rate</span></div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="px-4 sm:px-6 lg:px-8 py-20 md:py-28 border-b-4 bd">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-5 gap-10 md:gap-16">
+      <h2 class="md:col-span-2 text-4xl md:text-5xl font-black leading-tight">One parent company, three trades.</h2>
+      <div class="md:col-span-3 text-lg md:text-xl leading-relaxed space-y-5" style="max-width:62ch">
+        <p>Holistic Ventures is a Dhaka-based sourcing and logistics company. We buy, move and clear goods across borders for ourselves and for partners.</p>
+        <p class="mono text-base mut">Our work covers industrial and consumer electronics, bulk apparel and textiles, and the freight and customs paperwork that sits between a supplier and a shelf. We also run Silly Socks, our own consumer brand.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="pan px-4 sm:px-6 lg:px-8 py-20 md:py-28 border-b-4 bd">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-12">
+        <h2 class="text-4xl md:text-6xl font-black">Our services</h2>
+        <div class="w-40 h-2 inv mt-5"></div>
+        <p class="mono mut mt-6 max-w-xl font-bold">Four service lines, built around your cargo and your compliance requirements.</p>
+      </div>
+      <div class="grid md:grid-cols-2 border-4 bd" style="background:var(--bg)">
+        <article class="card p-10 md:p-12 border-b-4 md:border-r-4 bd min-h-[320px] flex flex-col justify-between">
+          <div>
+            <span class="ico inline-block border-[3px] bd p-3 mb-6"><svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
+            <h3 class="text-3xl font-black leading-tight mb-4">Electrical procurement</h3>
+          </div>
+          <p class="mono text-sm leading-relaxed mut font-bold">We source industrial components, heavy circuitry and consumer electronics, and track them from the factory to the final warehouse.</p>
+        </article>
+        <article class="card p-10 md:p-12 border-b-4 bd min-h-[320px] flex flex-col justify-between">
+          <div>
+            <span class="ico inline-block border-[3px] bd p-3 mb-6"><svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg></span>
+            <h3 class="text-3xl font-black leading-tight mb-3">Apparel and textiles</h3>
+            <p class="mono inline-block text-xs font-bold px-2 py-1 mb-5 inv">Operating brand: Silly Socks</p>
+          </div>
+          <p class="mono text-sm leading-relaxed mut font-bold">Bulk transit of knitwear and novelty consumer fashion, with large shipments handled as one managed movement.</p>
+        </article>
+        <article class="card p-10 md:p-12 border-b-4 md:border-b-0 md:border-r-4 bd min-h-[320px] flex flex-col justify-between">
+          <div>
+            <span class="ico inline-block border-[3px] bd p-3 mb-6"><svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="m9 15 2 2 4-4"/></svg></span>
+            <h3 class="text-3xl font-black leading-tight mb-4">Customs clearance</h3>
+          </div>
+          <p class="mono text-sm leading-relaxed mut font-bold">We prepare the documents and handle the filings so cargo moves from port to warehouse without avoidable delays.</p>
+        </article>
+        <article class="card p-10 md:p-12 min-h-[320px] flex flex-col justify-between">
+          <div>
+            <span class="ico inline-block border-[3px] bd p-3 mb-6"><svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="5" r="3"/><line x1="12" y1="22" x2="12" y2="8"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/></svg></span>
+            <h3 class="text-3xl font-black leading-tight mb-4">Global freight</h3>
+          </div>
+          <p class="mono text-sm leading-relaxed mut font-bold">Air, sea and land transport coordinated door to door, with the route and schedule visible from pickup to delivery.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries -->
+  <section id="industries" class="px-4 sm:px-6 lg:px-8 py-20 md:py-28 border-b-4 bd">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-4xl md:text-6xl font-black">Industries we serve</h2>
+      <div class="w-40 h-2 inv mt-5 mb-12"></div>
+      <div class="grid md:grid-cols-3 border-4 bd">
+        <div class="card p-8 md:p-10 border-b-4 md:border-b-0 md:border-r-4 bd">
+          <h3 class="text-2xl font-black mb-3">Electrical and infrastructure</h3>
+          <p class="mono text-sm mut font-bold leading-relaxed">Industrial components and heavy circuitry that need compliance checks before they ship.</p>
         </div>
-    </header>
-
-    <main class="flex-grow">
-        <section class="bg-black text-white pt-20 pb-16 md:pt-32 md:pb-28 px-4 sm:px-6 lg:px-8 border-b-[4px] border-black">
-            <div class="max-w-7xl mx-auto">
-                <div class="max-w-4xl">
-                    <div class="inline-block border-2 border-white px-3 py-1 mb-6">
-                        <span class="font-mono text-xs font-bold tracking-widest uppercase">Global Routing Code: HV-DHK-01</span>
-                    </div>
-                    <h1 class="text-5xl sm:text-7xl md:text-8xl font-black uppercase tracking-tight leading-[1.1] mb-8">
-                        Precision.<br />
-                        <span class="text-gray-400 italic font-normal">Scale.</span><br />
-                        Logistics.
-                    </h1>
-                    <p class="font-mono text-lg md:text-xl text-gray-300 max-w-2xl mb-12 border-l-4 border-white pl-6 py-2 leading-relaxed">
-                        A multinational sourcing syndicate. We move heavy electrical infrastructure and mass-market consumer textiles through highly regulated global corridors with absolute efficiency.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="#divisions" class="border-2 border-white bg-white text-black px-8 py-4 font-bold uppercase tracking-widest text-sm hover:bg-black hover:text-white hover:border-white transition-none flex items-center justify-between group">
-                            View Operations
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 ml-6 group-hover:translate-x-2 transition-transform duration-200"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="border-b-[4px] border-black bg-white">
-            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3">
-                <div class="p-8 md:p-12 border-b-4 md:border-b-0 md:border-r-4 border-black hover:bg-black hover:text-white transition-none group cursor-crosshair">
-                    <span class="block text-5xl md:text-7xl font-black tracking-tight mb-2">40+</span>
-                    <span class="font-mono text-sm font-bold uppercase tracking-widest text-gray-500 group-hover:text-gray-300">Ports Serviced</span>
-                </div>
-                <div class="p-8 md:p-12 border-b-4 md:border-b-0 md:border-r-4 border-black hover:bg-black hover:text-white transition-none group cursor-crosshair">
-                    <span class="block text-5xl md:text-7xl font-black tracking-tight mb-2">Tier 1</span>
-                    <span class="font-mono text-sm font-bold uppercase tracking-widest text-gray-500 group-hover:text-gray-300">Electrical Compliance</span>
-                </div>
-                <div class="p-8 md:p-12 hover:bg-black hover:text-white transition-none group cursor-crosshair">
-                    <span class="block text-5xl md:text-7xl font-black tracking-tight mb-2">99%</span>
-                    <span class="font-mono text-sm font-bold uppercase tracking-widest text-gray-500 group-hover:text-gray-300">Clearance Rate</span>
-                </div>
-            </div>
-        </section>
-
-        <section id="divisions" class="bg-gray-100 py-24 px-4 sm:px-6 lg:px-8 border-b-[4px] border-black">
-            <div class="max-w-7xl mx-auto">
-                <div class="flex flex-col md:flex-row justify-between items-end mb-16">
-                    <div>
-                        <h2 class="text-4xl md:text-6xl font-black uppercase tracking-wide text-black">Active Divisions</h2>
-                        <div class="w-48 h-2 bg-black mt-6"></div>
-                    </div>
-                    <p class="font-mono text-gray-600 max-w-sm mt-8 md:mt-0 md:text-right text-sm font-bold uppercase">
-                        Structural departments engineered for maximum yield across disparate international markets.
-                    </p>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-0 border-[4px] border-black bg-white">
-                    
-                    <!-- Electrical -->
-                    <div class="group p-10 md:p-14 border-b-4 md:border-r-4 border-black hover:bg-black hover:text-white transition-none flex flex-col justify-between min-h-[350px]">
-                        <div>
-                            <div class="mb-8 inline-block border-[3px] border-black p-4 group-hover:border-white group-hover:bg-white group-hover:text-black transition-none">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-10 h-10"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-                            </div>
-                            <h3 class="text-3xl md:text-4xl font-black uppercase mb-4 leading-none tracking-tight">Electrical Procurement</h3>
-                        </div>
-                        <p class="font-mono text-sm leading-relaxed text-gray-600 group-hover:text-gray-400 font-bold">
-                            Strategic sourcing of industrial components, heavy circuitry, and consumer electronics. Guaranteed supply chain integrity from factory floor to final warehouse.
-                        </p>
-                    </div>
-
-                    <!-- Textiles / Silly Socks -->
-                    <div class="group p-10 md:p-14 border-b-4 border-black hover:bg-black hover:text-white transition-none flex flex-col justify-between min-h-[350px]">
-                        <div>
-                            <div class="mb-8 inline-block border-[3px] border-black p-4 group-hover:border-white group-hover:bg-white group-hover:text-black transition-none">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-10 h-10"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg>
-                            </div>
-                            <h3 class="text-3xl md:text-4xl font-black uppercase mb-2 leading-none tracking-tight">Apparel & Textiles</h3>
-                            <span class="inline-block bg-black text-white group-hover:bg-white group-hover:text-black font-mono text-xs font-bold px-2 py-1 mb-6 uppercase">Operating: Silly Socks</span>
-                        </div>
-                        <p class="font-mono text-sm leading-relaxed text-gray-600 group-hover:text-gray-400 font-bold">
-                            Bulk transit of premium knitwear and novelty consumer fashion. Managing massive volumetric shipments with zero inventory loss.
-                        </p>
-                    </div>
-
-                    <!-- Customs -->
-                    <div class="group p-10 md:p-14 border-b-4 md:border-b-0 md:border-r-4 border-black hover:bg-black hover:text-white transition-none flex flex-col justify-between min-h-[350px]">
-                        <div>
-                            <div class="mb-8 inline-block border-[3px] border-black p-4 group-hover:border-white group-hover:bg-white group-hover:text-black transition-none">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-10 h-10"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="m9 15 2 2 4-4"/></svg>
-                            </div>
-                            <h3 class="text-3xl md:text-4xl font-black uppercase mb-4 leading-none tracking-tight">Customs Clearance</h3>
-                        </div>
-                        <p class="font-mono text-sm leading-relaxed text-gray-600 group-hover:text-gray-400 font-bold">
-                            Navigating bureaucratic bottlenecks seamlessly. We ensure absolute compliance, rapidly expediting international port-to-warehouse transitions.
-                        </p>
-                    </div>
-
-                    <!-- Logistics -->
-                    <div class="group p-10 md:p-14 hover:bg-black hover:text-white transition-none flex flex-col justify-between min-h-[350px]">
-                        <div>
-                            <div class="mb-8 inline-block border-[3px] border-black p-4 group-hover:border-white group-hover:bg-white group-hover:text-black transition-none">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-10 h-10"><circle cx="12" cy="5" r="3"/><line x1="12" y1="22" x2="12" y2="8"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/></svg>
-                            </div>
-                            <h3 class="text-3xl md:text-4xl font-black uppercase mb-4 leading-none tracking-tight">Global Freight</h3>
-                        </div>
-                        <p class="font-mono text-sm leading-relaxed text-gray-600 group-hover:text-gray-400 font-bold">
-                            Air, sea, and land transport synchronized perfectly. Total oversight over shipping routes, ensuring cargo remains untampered and on schedule.
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <footer id="contact" class="bg-white pt-20 pb-8 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-            <div class="col-span-1 md:col-span-2">
-                <!-- Repeated Logo for Footer -->
-                <div class="flex items-center space-x-4 mb-6">
-                    <div class="w-12 h-12 bg-black relative flex-shrink-0">
-                        <div class="absolute bottom-0 right-0 w-full h-full bg-white" style="clip-path: polygon(100% 0, 100% 100%, 0 100%);"></div>
-                        <div class="absolute top-1/2 left-1/2 w-2 h-2 bg-black -translate-x-1/2 -translate-y-1/2"></div>
-                    </div>
-                    <div class="flex flex-col">
-                        <span class="font-black text-xl leading-none tracking-wide">HOLISTIC</span>
-                        <span class="font-black text-xl leading-none tracking-wide">VENTURES</span>
-                        <div class="h-1 bg-black mt-1 w-full"></div>
-                    </div>
-                </div>
-                <p class="font-mono text-sm text-gray-600 max-w-md uppercase leading-relaxed font-bold">
-                    The parent entity overseeing global sourcing operations, heavy electronics logistics, and the Silly Socks consumer brand. Moving capital and cargo through regulated corridors.
-                </p>
-            </div>
-            
-            <div>
-                <h4 class="font-black text-xl uppercase tracking-widest border-b-[3px] border-black pb-2 mb-6">HQ / Routing</h4>
-                <ul class="font-mono text-sm space-y-3 font-bold text-gray-800">
-                    <li>Holistic Ventures Corporate</li>
-                    <li>Dhaka, Bangladesh</li>
-                    <li class="text-gray-500 pt-2 border-t-2 border-gray-100">Status: Active Operations</li>
-                </ul>
-            </div>
-            
-            <div>
-                <h4 class="font-black text-xl uppercase tracking-widest border-b-[3px] border-black pb-2 mb-6">Directives</h4>
-                <ul class="font-mono text-sm space-y-2">
-                    <li class="font-black text-base uppercase">Office of the Directorate</li>
-                    <li class="text-gray-600 font-bold uppercase">Executive Management</li>
-                    <li class="pt-6">
-                        <a href="mailto:contact@holisticventures.com" class="inline-block border-[3px] border-black px-4 py-2 hover:bg-black hover:text-white font-bold transition-none uppercase tracking-widest text-xs">
-                            Initiate Contact
-                        </a>
-                    </li>
-                </ul>
-            </div>
+        <div class="card p-8 md:p-10 border-b-4 md:border-b-0 md:border-r-4 bd">
+          <h3 class="text-2xl font-black mb-3">Apparel and textiles</h3>
+          <p class="mono text-sm mut font-bold leading-relaxed">Knitwear and fashion goods in bulk, moved on fixed schedules to keep stock on shelves.</p>
         </div>
-
-        <div class="max-w-7xl mx-auto border-t-[4px] border-black pt-8 flex flex-col md:flex-row justify-between items-center font-mono text-xs text-black font-bold uppercase">
-            <p>&copy; <script>document.write(new Date().getFullYear())</script> Holistic Ventures. All rights reserved.</p>
-            <p class="mt-4 md:mt-0 tracking-widest bg-black text-white px-4 py-2 border-2 border-black">RESTRICTED ACCESS / AUTHORIZED ONLY</p>
+        <div class="card p-8 md:p-10">
+          <h3 class="text-2xl font-black mb-3">Consumer products</h3>
+          <p class="mono text-sm mut font-bold leading-relaxed">Small consumer electronics and novelty goods for direct-to-customer brands.</p>
         </div>
-    </footer>
+      </div>
+    </div>
+  </section>
 
+  <!-- Why -->
+  <section id="why" class="pan px-4 sm:px-6 lg:px-8 py-20 md:py-28 border-b-4 bd">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-4xl md:text-6xl font-black max-w-3xl">Built around your cargo, not around a script.</h2>
+      <div class="w-40 h-2 inv mt-5 mb-12"></div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="border-[3px] bd p-6" style="background:var(--bg)"><h3 class="text-xl font-black mb-2">Compliance first</h3><p class="mono text-sm mut font-bold leading-relaxed">Paperwork is checked before the cargo moves, not after it is held.</p></div>
+        <div class="border-[3px] bd p-6" style="background:var(--bg)"><h3 class="text-xl font-black mb-2">Factory to warehouse</h3><p class="mono text-sm mut font-bold leading-relaxed">Sourcing, freight and clearance run under one roof.</p></div>
+        <div class="border-[3px] bd p-6" style="background:var(--bg)"><h3 class="text-xl font-black mb-2">Route visibility</h3><p class="mono text-sm mut font-bold leading-relaxed">You can see where a shipment is and what happens next.</p></div>
+        <div class="border-[3px] bd p-6" style="background:var(--bg)"><h3 class="text-xl font-black mb-2">One point of contact</h3><p class="mono text-sm mut font-bold leading-relaxed">You talk to the person handling your shipment, not a ticket queue.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quote -->
+  <section id="quote" class="inv px-4 sm:px-6 lg:px-8 py-20 md:py-28 border-b-4 bd">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12">
+      <div>
+        <h2 class="text-4xl md:text-6xl font-black leading-tight mb-6">Ready to move your next shipment?</h2>
+        <p class="mono text-lg leading-relaxed" style="opacity:.85;max-width:44ch">Tell us what you are shipping and where it is going. We will reply by email with a quote.</p>
+      </div>
+      <div id="quoteBox" class="p-6 md:p-8" style="background:var(--bg);color:var(--fg)">
+        <div class="mb-5"><label for="qn">Your name</label><input id="qn" type="text" autocomplete="name"></div>
+        <div class="mb-5"><label for="qr">Route (from and to)</label><input id="qr" type="text" placeholder="e.g. Guangzhou to Chattogram"></div>
+        <div class="mb-6"><label for="qc">What are you shipping?</label><textarea id="qc" rows="3" placeholder="Cargo type, quantity, weight"></textarea></div>
+        <button id="qsend" class="btn" type="button">Send by email</button>
+        <p class="mono text-xs mut font-bold mt-4">This opens your email app with the details filled in.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact" class="px-4 sm:px-6 lg:px-8 pt-16 pb-8">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-14">
+    <div class="md:col-span-2">
+      <p class="font-black text-2xl mb-4">Holistic Ventures</p>
+      <p class="mono text-sm mut font-bold leading-relaxed" style="max-width:52ch">The parent company behind our global sourcing, electrical logistics and the Silly Socks consumer brand.</p>
+    </div>
+    <div>
+      <h3 class="font-black text-lg border-b-[3px] bd pb-2 mb-4">Company</h3>
+      <ul class="mono text-sm font-bold space-y-2">
+        <li><a href="#about" class="underline">About</a></li><li><a href="#services" class="underline">Services</a></li><li><a href="#industries" class="underline">Industries</a></li><li><a href="#why" class="underline">Why us</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="font-black text-lg border-b-[3px] bd pb-2 mb-4">Contact</h3>
+      <ul class="mono text-sm font-bold space-y-2">
+        <li>Dhaka, Bangladesh</li>
+        <li><a href="mailto:tauhidnoman1@gmail.com" class="underline">tauhidnoman1@gmail.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto border-t-4 bd pt-6 mono text-xs font-bold flex flex-col md:flex-row justify-between gap-3">
+    <p>&copy; <span id="yr">2026</span> Holistic Ventures. All rights reserved.</p>
+    <p>Dhaka, Bangladesh</p>
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent=new Date().getFullYear();
+var mb=document.getElementById('menuBtn'),mn=document.getElementById('mobileNav');
+mb.addEventListener('click',function(){var o=mn.classList.toggle('hidden');mb.setAttribute('aria-expanded',String(!o));mn.style.display=o?'':'flex'});
+mn.addEventListener('click',function(e){if(e.target.tagName==='A'){mn.classList.add('hidden');mn.style.display='';mb.setAttribute('aria-expanded','false')}});
+document.getElementById('qsend').addEventListener('click',function(){
+  var n=document.getElementById('qn').value.trim(),r=document.getElementById('qr').value.trim(),c=document.getElementById('qc').value.trim();
+  var body='Name: '+n+'\nRoute: '+r+'\nCargo: '+c;
+  location.href='mailto:tauhidnoman1@gmail.com?subject='+encodeURIComponent('Quote request')+'&body='+encodeURIComponent(body);
+});
+</script>
 </body>
 </html>
